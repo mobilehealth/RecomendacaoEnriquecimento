@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ 
+<hibernate-mapping>
+    
+    <class name="mobilehealth.core.domain.Person" table="person">
+        <!-- O atributo table é "opcional" caso o nome da  classe e o nome da tabela sejam iguais -->
+        
+        <id name="id" column="id" type="integer" />
+        <property name="P1" column="p1"/>
+        <property name="P2" column="p2"/>
+        <property name="P3" column="p3"/>
+        <property name="SS1" column="ss1"/>
+        <property name="SS2" column="ss2"/>
+        <property name="bloodType" column="bloodtype"/>
+        <property name="dateBirth" column="date_birth"/>
+        <property name="dateRegister" column="date_register"/>
+        <property name="description" column="description"/>
+        <property name="disease" column="disease"/>
+        <property name="email" column="email"/>
+        <property name="gender" column="gender"/>
+        <property name="genre" column="genre"/>
+        <property name="income" column="income"/>
+        <property name="nRecResp" column="nrecresp"/>
+        <property name="nameFirst" column="name_first"/>
+        <property name="nameLast" column="name_last"/>
+        <property name="online" column="online"/>
+        <property name="password" column="password"/>
+        <property name="phone" column="phone"/>
+        <property name="race" column="race"/>
+        <property name="rateDurationContents" column="rate_duration_contents"/>
+        <property name="rating" column="rating"/>
+        <property name="religion" column="religion"/>
+        <property name="status" column="status"/>
+        <property name="file" column="id_file" type="integer"/>
+        <property name="frequency" column="id_frequency" type="integer"/>
+        <property name="learning" column="id_learning" type="integer"/>
+        <property name="privacy" column="id_privacy" type="integer"/>
+        <property name="scores" column="id_scores" type="integer"/>
+        <property name="times" column="id_times" type="integer"/>
+
+    </class>
+    
+</hibernate-mapping>

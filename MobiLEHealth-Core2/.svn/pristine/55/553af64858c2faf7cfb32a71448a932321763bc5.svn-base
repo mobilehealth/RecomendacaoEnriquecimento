@@ -1,0 +1,169 @@
+package mobilehealth.core.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+/**
+ * 
+ * @author Jonathan Darlan
+ * @date 01/08/2014
+ * 
+ */
+
+@Entity
+@Table(schema="public")
+public class Location {
+
+	@Id
+	@SequenceGenerator(name = "location_seq", sequenceName = "location_seq", schema="public")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "location_seq")
+	private int id;
+	
+	private String title;
+	
+	private String description;
+	
+	private double altitude;
+	
+	private String country;
+	
+	private String state;
+	
+	private String city;
+	
+	private String neighborhood;
+	
+	private String streetName;
+	
+	private int streetNumber;
+	
+	private String CEP;
+	
+	private String idGoogle;
+	
+	private double latitude;
+	
+	private double longitude;
+	
+	/*
+	 * Setters and Getters
+	 */
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getAltitude() {
+		return altitude;
+	}
+
+	public void setAltitude(double altitude) {
+		this.altitude = altitude;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getNeighborhood() {
+		return neighborhood;
+	}
+
+	public void setNeighborhood(String neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public int getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(int streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getCEP() {
+		return CEP;
+	}
+
+	public void setCEP(String cEP) {
+		CEP = cEP;
+	}
+
+	public String getIdGoogle() {
+		return idGoogle;
+	}
+
+	public void setIdGoogle(String idGoogle) {
+		this.idGoogle = idGoogle;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	
+	
+}

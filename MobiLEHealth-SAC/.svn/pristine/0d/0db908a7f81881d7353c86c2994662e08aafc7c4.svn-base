@@ -1,0 +1,180 @@
+package mobilehealth.sac.test;
+
+import java.util.Map.Entry;
+
+import org.joda.time.DateTime;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+
+import mobilehealth.core.domain.Content;
+import mobilehealth.sac.SACExternalService;
+import mobilehealth.sac.SACExternalServiceImpl;
+import mobilehealth.sac.augmentation.SemanticAugmentation;
+import mobilehealth.sac.ontology.Link;
+import mobilehealth.sac.ontology.Resource;
+import mobilehealth.sac.semanticrepository.UserProfileOntology;
+import mobilehealth.sac.util.DownloadURL;
+
+/**
+ * Essa classe é para testar o funcionamento do sistema, não está validando a corretude do enriquecimento e dos resultados dos indices. 
+ * @author Jonathan
+ *
+ */
+public class SASContentTest {
+
+	private SemanticAugmentation semanticAugmentation;
+	
+	public static void main(String[] args) {
+		SASContentTest sasContentTest = new SASContentTest();
+		//sasContentTest.testEnglishAugmentation();
+		//sasContentTest.testPortugueseAugmentation();
+		sasContentTest.getAugmentationResults();
+		System.exit(0);
+	}
+	
+	public SASContentTest() {
+		semanticAugmentation = new SemanticAugmentation();
+	}
+	
+	public void testPortugueseAugmentation() {
+		testPortugueseURL();
+		testPortugueseText();
+	}
+	
+	// Test: passed
+	public void testEnglishAugmentation() {
+
+		testEnglishURL();
+		testEnglishText();
+		
+	}
+	
+	public void getAugmentationResults() {
+		
+		//testGetOntologyProfile(1);
+		//testGetOntologyProfile(2);
+		//testGetOntologyProfile(3);
+		//testGetOntologyProfile(4);
+
+		testGetIndex(1);
+		testGetIndex(2);
+		//testGetIndex(3);
+		//testGetIndex(4);
+
+	}
+	
+	// Test: passed
+	private void testEnglishURL() {
+		
+		String text = DownloadURL.download("http://www.idf.org/complications-diabetes");
+
+		if (!text.isEmpty()) {
+			testAugmentation(1, text);
+		}
+		
+	}
+	
+	// Test: passed
+	private void testEnglishText() {
+
+		String text = "COMPLICATIONS OF DIABETES\n"
+				+ "People with diabetes have an increased risk of developing a number of serious health problems. "
+				+ "Consistently high blood glucose levels can lead to serious diseases affecting the heart and blood vessels, "
+				+ "eyes, kidneys, nerves and teeth. In addition, people with diabetes also have a higher risk of developing infections. "
+				+ "In almost all high-income countries, diabetes is a leading cause of cardiovascular disease, blindness, kidney failure, and "
+				+ "lower limb amputation.\n"
+				+ "Maintaining blood glucose levels, blood pressure, and cholesterol at or close to normal can help delay or prevent diabetes "
+				+ "complications. Therefore people with diabetes need regular monitoring.";
+		
+		testAugmentation(2, text);
+		
+		
+	}
+	
+	private void testPortugueseURL() {
+		
+		String text = DownloadURL.download("http://www.diabetes.org.br/o-que-e-diabetes");
+
+		if (text.isEmpty()) {
+			testAugmentation(3, text);
+		}
+		
+	}
+	
+	private void testPortugueseText() {
+
+		String text = "O QUE É DIABETES\n"
+				+ "Os alimentos sofrem digestão no intestino e se transformam em açúcar, chamada glicose que é absorvida para o sangue. "
+				+ "A glicose no sangue é usada pelos tecidos como energia. A utilização da glicose depende da presença de insulina, uma "
+				+ "substancia produzida nas células do pâncreas. Quando a glicose não é bem utilizada pelo organismo ela se eleva no sangue "
+				+ "o que chamamos de HIPERGLICEMIA. Diabetes é a elevação da Glicose no sangue: HIPERGLICEMIA.";
+		
+		testAugmentation(4, text);
+		
+		
+	}
+	
+	//Test: passed
+	private void testAugmentation(int id, String text) {
+		Resource resource = new Resource();
+		resource.setSchema("public");
+		resource.setTableName("content");
+		resource.setFieldName("id");
+		resource.setFieldValue(id);
+		resource.setDateProcess(DateTime.now());
+		resource.setText(text);
+
+		if (!resource.getText().isEmpty()) {
+			semanticAugmentation.execute(resource);
+		}
+		
+	}
+	
+	//Test: passsed
+	private void testGetOntologyProfile(int id) {
+		
+		/* Get Resources from ontology Profile */
+		UserProfileOntology userProfileOntology = null;
+		Resource resource = null;
+		
+		try {
+			userProfileOntology = new UserProfileOntology();
+			resource = userProfileOntology.findResource("public", "content", "id", id);
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+		
+		if(resource != null) {
+			System.out.println("Resource founded: " + resource.getFieldValue());
+			System.out.println("Date Process: " + resource.getDateProcess());
+			System.out.println("IRI: " + resource.getUri());
+			System.out.println("Links:");
+			for(Link link : resource.getLinks()) {
+				System.out.println("- IRI: " + link.getUri());
+				System.out.println("- Domain Name: " + link.getDomain().getDomainName());
+				System.out.println("- Domain IRI: " + link.getDomainURI());
+				System.out.println("- Root: " + link.getRoot());
+				System.out.println("- Quantity: " + link.getQuantity());
+				System.out.println("- ID Resource: " + link.getResource().getFieldValue());
+			}
+		} else {
+			System.out.println("Resource not founded: " + id);
+		}
+
+	}
+	
+	// Test: passed
+	// Falta validar o valor retornado
+	private void testGetIndex(int id) {
+		
+		/* Calcule Relations */
+		SACExternalService sacService = new SACExternalServiceImpl();
+		Content content = new Content();
+		content.setId(id);
+		
+		System.out.println("Result from Resource: " + id);
+		for (Entry<String, Double> entry : sacService.getRelationshipLevelDomains(content).entrySet()) {
+			System.out.println(id + ": " + entry.getKey() + " - " + entry.getValue());
+		}
+		
+	}
+}

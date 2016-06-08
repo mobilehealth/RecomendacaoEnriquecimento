@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/jdarlan/ontologies/2014/2/untitled-ontology-99#"
+     xml:base="http://www.semanticweb.org/jdarlan/ontologies/2014/2/untitled-ontology-99"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#MobiLEHealth -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#MobiLEHealth"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Allergy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Allergy">
+        <rdfs:label>Allergy</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Biomolecule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Biomolecule">
+        <rdfs:label>Biomolecule</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Molecule"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Diagnosis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Diagnosis">
+        <rdfs:label>Diagnosis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease">
+        <rdfs:label>Disease</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Drug -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Drug">
+        <rdfs:label>Drug</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Exams -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Exams">
+        <rdfs:label>Exams</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health">
+        <rdfs:label>Health</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#MobiLEHealth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hormone -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hormone">
+        <rdfs:label>Hormone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#HumanBody"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#HumanBody -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#HumanBody">
+        <rdfs:label>Human Body</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#MobiLEHealth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Molecule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Molecule">
+        <rdfs:label>Molecule</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#MobiLEHealth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Parts -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Parts">
+        <rdfs:label>Parts</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#HumanBody"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton">
+        <rdfs:label>Sympton</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#BlurryVision -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#BlurryVision">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Blurry Vision</rdfs:label>
+        <rdfs:label>Blurred Vision</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#DiabeticKetoacidosis -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#DiabeticKetoacidosis">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease"/>
+        <rdfs:label>Diabetic Ketoacidosis</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#DiabeticRetinopathy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#DiabeticRetinopathy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease"/>
+        <rdfs:label>Diabetic retinopathy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Drowsiness -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Drowsiness">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Drowsiness</rdfs:label>
+        <rdfs:label>Somnolence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Dry -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Dry">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Dry</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeHunger -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeHunger">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>ExtremeHunger</rdfs:label>
+        <rdfs:label>Increased hunger</rdfs:label>
+        <rdfs:label>Excessive hunger</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeThirst -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeThirst">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>High Thirst</rdfs:label>
+        <rdfs:label>Extreme Thirst</rdfs:label>
+        <rdfs:label>Excessive thirst</rdfs:label>
+        <rdfs:label>Polydipsia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Fatigue -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Fatigue">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Tiredness</rdfs:label>
+        <rdfs:label>Fatigue</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FootUlcers -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FootUlcers">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease"/>
+        <rdfs:label>Foot ulcers</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FrequentUrination -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FrequentUrination">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Frequent Urination</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FruityBreathOdor -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FruityBreathOdor">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Fruity breath odor</rdfs:label>
+        <rdfs:label>Bad Breath</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hyperglycemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hyperglycemia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease"/>
+        <rdfs:label>Excess blood glucose</rdfs:label>
+        <rdfs:label>High Blood Sugar</rdfs:label>
+        <rdfs:label>Hyperglycemia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hypoglycemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hypoglycemia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease"/>
+        <rdfs:label>Hypoglycemia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ItchySkin -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ItchySkin">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Itchy Skin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Numbness -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Numbness">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Tingling</rdfs:label>
+        <rdfs:label>Numbness</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#SlowHealing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#SlowHealing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Slow-healing</rdfs:label>
+        <rdfs:label>Slow healing</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#StomachPain -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#StomachPain">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Abdominal Pain</rdfs:label>
+        <rdfs:label>Stomach Pain</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#UnexplainedWeightLoss -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#UnexplainedWeightLoss">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Weight Loss</rdfs:label>
+        <rdfs:label>Unexplained Weight Loss</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Vomiting -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Vomiting">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Sympton"/>
+        <rdfs:label>Vomiting</rdfs:label>
+        <rdfs:label>Emesis</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#blood -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#blood">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Parts"/>
+        <rdfs:label>Blood</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#diabetes -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#diabetes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Disease"/>
+        <rdfs:label>diabetes mellitus</rdfs:label>
+        <rdfs:label>Diabetes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#glucose -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#glucose">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Biomolecule"/>
+        <rdfs:label>glucose</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#hgb_a1c -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#hgb_a1c">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Exams"/>
+        <rdfs:label>HGB</rdfs:label>
+        <rdfs:label>Hemoglobin A1C</rdfs:label>
+        <rdfs:label>Hgb-A1C</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#insulin -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#insulin">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hormone"/>
+        <rdfs:label>Insulin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#pancreas -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#pancreas">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Parts"/>
+        <rdfs:label>Pancreas</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

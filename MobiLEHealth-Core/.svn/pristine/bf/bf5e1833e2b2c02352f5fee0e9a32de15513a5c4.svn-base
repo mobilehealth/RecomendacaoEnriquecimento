@@ -1,0 +1,317 @@
+package mobilehealth.core.domain;
+
+import java.io.Serializable;
+import java.util.Calendar;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import mobilehealth.core.dao.GenericDAO;
+import mobilehealth.core.domain.Location;
+import mobilehealth.core.domain.Content;
+import mobilehealth.core.domain.Person;
+
+import com.google.gson.annotations.Expose;
+
+
+@Entity
+@Table(name="context", schema="public")
+public class Context implements Serializable {
+	private static final long serialVersionUID = 7246161072381654218L;
+	
+	public static final int TYPE_REGULAR = 	0; 	// contexto criado periodicamente (automatico)
+	public static final int TYPE_LOGIN = 	1;
+	public static final int TYPE_LOGOUT = 	2;
+	
+	public static final int TYPE_CHALLENGE_CREATED = 	100;
+	public static final int TYPE_CHALLENGE_ADDED = 		101;
+	public static final int TYPE_CHALLENGE_DELETED = 	102;
+	public static final int TYPE_CHALLENGE_COMMENTED =	103;
+	public static final int TYPE_CHALLENGE_VIEWED =		104;
+	public static final int TYPE_CHALLENGE_RATED = 		105;
+	public static final int TYPE_CHALLENGE_REJECTED = 	106;
+	public static final int TYPE_CHALLENGE_EDITED = 	107;
+	public static final int TYPE_CHALLENGE_WARNED = 	108;
+	public static final int TYPE_CHALLENGE_SEARCH = 	109;	// usuario buscou por desafios
+	
+	public static final int TYPE_EVENT_CREATED = 	200;
+	public static final int TYPE_EVENT_ADDED = 		201;
+	public static final int TYPE_EVENT_DELETED = 	202;
+	public static final int TYPE_EVENT_COMMENTED =	203;
+	public static final int TYPE_EVENT_VIEWED =		204;
+	public static final int TYPE_EVENT_RATED = 		205;
+	public static final int TYPE_EVENT_REJECTED = 	206;
+	public static final int TYPE_EVENT_EDITED = 	207;
+	public static final int TYPE_EVENT_WARNED = 	208;
+	public static final int TYPE_EVENT_SEARCH = 	209;	// usuario buscou por eventos
+
+	public static final int TYPE_GROUP_CREATED = 	300;
+	public static final int TYPE_GROUP_ADDED = 		301;
+	public static final int TYPE_GROUP_DELETED = 	302;
+	public static final int TYPE_GROUP_COMMENTED =	303;
+	public static final int TYPE_GROUP_VIEWED =		304;
+	public static final int TYPE_GROUP_RATED = 		305;
+	public static final int TYPE_GROUP_REJECTED = 	306;
+	public static final int TYPE_GROUP_EDITED = 	307;
+	public static final int TYPE_GROUP_WARNED = 	308;
+	public static final int TYPE_GROUP_SEARCH = 	309;	// usuario buscou por grupos
+	
+	public static final int TYPE_LOCATION_CREATED = 	400;
+	public static final int TYPE_LOCATION_ADDED = 		401;
+	public static final int TYPE_LOCATION_DELETED = 	402;
+	public static final int TYPE_LOCATION_COMMENTED =	403;
+	public static final int TYPE_LOCATION_VIEWED =		404;
+	public static final int TYPE_LOCATION_RATED = 		405;
+	public static final int TYPE_LOCATION_REJECTED =	406;
+	public static final int TYPE_LOCATION_EDITED = 		407;
+	public static final int TYPE_LOCATION_WARNED = 		408;
+	public static final int TYPE_LOCATION_SEARCH = 		409;	// usuario buscou por locais
+	
+	public static final int TYPE_POST_CREATED = 	500;
+	public static final int TYPE_POST_ADDED = 		501;
+	public static final int TYPE_POST_DELETED = 	502;
+	public static final int TYPE_POST_COMMENTED =	503;
+	public static final int TYPE_POST_VIEWED =		504;
+	public static final int TYPE_POST_RATED = 		505;
+	public static final int TYPE_POST_REJECTED =	506;
+	public static final int TYPE_POST_EDITED = 		507;
+	public static final int TYPE_POST_WARNED = 		508;
+	public static final int TYPE_POST_SEARCH = 		509;	// usuario buscou por postagens
+	
+	public static final int TYPE_PERSON_CREATED_FIRST = 600;
+	public static final int TYPE_PERSON_CREATED_AGAIN = 601;
+	public static final int TYPE_PERSON_EDITED = 		602;
+	public static final int TYPE_PERSON_DELETED = 		603;
+	public static final int TYPE_PERSON_COMMENT = 		604;
+	public static final int TYPE_PERSON_COMMENTED = 	605;
+	public static final int TYPE_PERSON_VIEW = 			606;
+	public static final int TYPE_PERSON_VIEWED = 		607;
+	public static final int TYPE_PERSON_WARN = 			608;
+	public static final int TYPE_PERSON_WARNED = 		609;
+	public static final int TYPE_PERSON_SEARCH = 		610;	// usuario buscou por pessoas
+	
+	public static final int TYPE_PERSON_FRIEND_REQUEST =	700;
+	public static final int TYPE_PERSON_FRIEND_REQUESTED =	701;
+	public static final int TYPE_PERSON_FRIEND_START = 		702;
+	public static final int TYPE_PERSON_FRIEND_VIEW = 		703;
+	public static final int TYPE_PERSON_FRIEND_VIEWED = 	704;
+	public static final int TYPE_PERSON_FRIEND_REJECT = 	705;
+	public static final int TYPE_PERSON_FRIEND_REJECTED = 	706;
+	public static final int TYPE_PERSON_FRIEND_DELETE = 	707;
+	public static final int TYPE_PERSON_FRIEND_DELETED = 	708;
+	public static final int TYPE_PERSON_FRIEND_REQUEST_CANCEL =   709;
+	public static final int TYPE_PERSON_FRIEND_REQUEST_CANCELED = 710;
+	
+	public static final int TYPE_EXTERNALACCOUNT_CREATED = 800;
+	public static final int TYPE_EXTERNALACCOUNT_DELETED = 801;
+	
+	public static final int TYPE_CHAT_RECEIVE = 900;
+	public static final int TYPE_CHAT_SEND = 	901;
+	public static final int TYPE_CHAT_PERSON = 	902;		// Nova pessoa com quem se comunica por chat
+	public static final int TYPE_SHARING = 		903;		// TODO PENDENCIA: amadurecer UC de compartilhamento. Atualmente, nao esta sendo usado.
+	
+	public static final int TYPE_CHALLENGE_ANSWER_RIGHT = 1000;
+	public static final int TYPE_CHALLENGE_ANSWER_WRONG = 1001;
+	
+	public static final int CONNECTION_NONE = 0;
+	public static final int CONNECTION_WIFI = 1;
+	public static final int CONNECTION_MOBILE = 2;
+	// usuario buscou por eventos
+
+	// usuario buscou por postagens
+
+
+	public Context()
+	{
+
+	}
+	
+	public Context(int type){
+		
+		this.type = type;
+	}
+	/*
+	public Context()
+	{
+		this.type = TYPE_REGULAR;
+	}
+	
+	public Context(int type){
+		this.type = type;
+	}
+	*/
+	
+	@Id
+	@SequenceGenerator(name = "context_id_seq", sequenceName = "context_id_seq", allocationSize = 1) 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "context_id_seq")  
+	@Column(name = "id")
+	@Expose(serialize=true, deserialize=true)
+	private int id;
+	
+	// tipo de evento que disparou a criação da instância
+	@Column(name = "type")
+	@Expose(serialize=true, deserialize=true)
+	private int type;		
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "time_stamp")
+	@Expose(serialize=true, deserialize=true)
+	private Calendar timeStamp;
+	
+	@Column(name = "battery")
+	@Expose(serialize=true, deserialize=true)
+	private float battery;
+		
+	@Column(name = "person_speed")
+	@Expose(serialize=true, deserialize=true)
+	private float personSpeed;
+	
+	@Column(name = "connection_speed")
+	@Expose(serialize=true, deserialize=true)
+	private float connectionSpeed;
+	
+	@Column(name = "connection")
+	@Expose(serialize=true, deserialize=true)
+	private int connection;
+	
+	//-----------------------------------------------------------------------------
+	// 1:1
+	//----------------------------------------------------------------------------- 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_location")
+	@Expose(serialize=true, deserialize=true)
+	private Location location; 
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_content")
+	@Expose(serialize=true, deserialize=true)
+	private Content content; 
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_device")
+	@Expose(serialize=true, deserialize=true)
+	private Device device; 
+	
+	//-----------------------------------------------------------------------------
+	// N:1
+	//-----------------------------------------------------------------------------
+	@ManyToOne
+	@JoinColumn(name="id_person")
+	@Expose(serialize=true, deserialize=true)
+	private Person person;
+	
+	//------------------------------------------------------------------------------------------------
+	// Getters and Setters
+	//------------------------------------------------------------------------------------------------
+	public Location getLocation() {
+		return location;
+	}
+	
+	public int getType() {
+		return type;
+	}
+	
+	public void setType(int type) {
+		this.type = type;
+	}
+	
+	public Calendar getTimeStamp() {
+		return timeStamp;
+	}
+	
+	public void setTimeStamp(Calendar timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public float getBattery() {
+		return battery;
+	}
+	
+	public void setBattery(float battery) {
+		this.battery = battery;
+	}
+	
+	public float getPersonSpeed() {
+		return personSpeed;
+	}
+	
+	public void setPersonSpeed(float personSpeed) {
+		this.personSpeed = personSpeed;
+	}
+	
+	public Person getPerson() {
+		return person;
+	}
+	
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public int getConnection() {
+		return connection;
+	}
+
+	public void setConnection(int connection) {
+		this.connection = connection;
+	}
+
+	public float getConnectionSpeed() {
+		return connectionSpeed;
+	}
+
+	public void setConnectionSpeed(float connectionSpeed) {
+		this.connectionSpeed = connectionSpeed;
+	}
+
+	public Device getDevice() {
+		return device;
+	}
+
+	public void setDevice(Device device) {
+		this.device = device;
+	}
+
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+	
+	@Override
+	public String toString() {
+		return "Context [id=" + id + ", type=" + type + ", timeStamp="
+				+ timeStamp + ", battery=" + battery + ", personSpeed="
+				+ personSpeed + ", connectionSpeed=" + connectionSpeed
+				+ ", connection=" + connection + ", location=" + location
+				+ ", device=" + device + ", person=" + person + "]";
+	}
+	
+
+	
+
+}

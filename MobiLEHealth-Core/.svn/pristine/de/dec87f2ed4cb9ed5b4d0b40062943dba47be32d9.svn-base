@@ -1,0 +1,496 @@
+package mobilehealth.prc.analyzer.semantic.indexer;
+
+import gate.creole.ontology.DatatypeProperty;
+
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import mobilehealth.prc.analyzer.MetadataMap;
+
+public class SemanticIndexerImpl implements SemanticIndexer {
+
+	private MetadataMap configMap;
+	private Ontology profileOnto;
+	private Ontology domainOnto;
+	private String workDir;
+	private MetadataMap domainOntos;
+	private RelationCalc reCalc;
+
+	public String getWorkDir() {
+		return workDir;
+	}
+
+	public void setWorkDir(String workDir) {
+		this.workDir = workDir;
+	}
+
+	public MetadataMap getDomainsOntologies() {
+		return domainOntos;
+	}
+	
+	public SemanticIndexerImpl(String dir) {
+
+		workDir = dir;
+		domainOntos = new MetadataMap();
+		domainOnto = new OntologyImplGate();
+		configMap = new MetadataMap();
+		createConfig();
+		profileOnto = new OntologyImplGate(configMap.get("profile").toString());
+		reCalc = new RelationCalcImplGate();
+	}
+
+	public void finalize() {
+		
+		profileOnto.finalize();
+		domainOnto.finalize();
+		reCalc.finalize();
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#getProfileOnto()
+	 */
+	@Override
+	public String getProfileOnto() {
+
+		String ontoText = "";
+
+		try {
+			ontoText = org.apache.commons.io.FileUtils.readFileToString(new File(configMap.get("profile").toString()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return ontoText;
+	}
+
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#getDomainOntoForURL(java.net.URL)
+	 */
+
+	@Override
+	public String getDomainOntoForURL(String aOntologyURI) {
+
+		if (domainOntos.containsKey(aOntologyURI))
+			return domainOntos.get(aOntologyURI).toString();
+		else
+			return null;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#addDomainOntology(java.lang.String)
+	 */
+	@Override
+	public void addDomainOntology(String aOntology) {
+
+		Ontology onto = new OntologyImplGate();
+		onto.readOntologyData(aOntology);
+
+		if (!configMap.containsKey(onto.getOntologyURI())) {
+
+			String ontoPath = getWorkDir() + "/" + onto.hashCode() + ".owl"; 
+			configMap.put(onto.getDefaultNameSpace(), ontoPath);
+			domainOntos.put(onto.getDefaultNameSpace(), aOntology);
+			File fileTest;
+			int count = 0;
+			
+			do {
+				ontoPath = ontoPath.substring(0, ontoPath.length() - 5) + "_" + String.valueOf(count) + ".owl";
+				fileTest = new File(ontoPath);				
+				
+			} while( fileTest.exists());
+			
+			
+			java.io.PrintWriter print;
+
+			try {
+				print = new java.io.PrintWriter(ontoPath);
+				print.print(onto);
+				print.flush();
+				print.close();
+				saveConfig();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+			saveConfig();
+		}
+		
+		onto.finalize();
+	}
+
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#removeDomainOntology(java.lang.String)
+	 */
+
+	@Override
+	public void removeDomainOntology(String aOntologyURI) {
+
+		if (configMap.containsKey(aOntologyURI)) {
+
+			String ontoPath = (String) configMap.get(aOntologyURI);
+			configMap.remove(aOntologyURI);
+
+			java.io.File toDelete = new java.io.File(ontoPath);
+			toDelete.delete();
+
+			saveConfig();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#addUser(ubi.analytic.MetadataMap)
+	 */
+	@Override
+	public String addUser(MetadataMap metadata) {
+		
+		//Verifica se o usuário já existe
+		String userID = (String) metadata.get("UserID");
+		if (userID != null) {
+			List<String> userTest = profileOnto.findResourceInstancesWithURL(
+					profileOnto.getDefaultNameSpace() + "User", userID);
+			
+			//Se não há usuários, cria
+			if (userTest.isEmpty()) {
+				String userURI = profileOnto.addOInstance("U_", profileOnto.getDefaultNameSpace() + "User");
+				profileOnto.setLabelForInstance(userURI, userID);
+				
+				for (Object key : metadata.keySet()) {
+					
+					if (metadata.get(key) != null) {
+						if (profileOnto.isDatatypeProperty(profileOnto.getDefaultNameSpace() + (String)key)) {
+							profileOnto.setDataPropertyValueForInstance(metadata.get(key).toString(), "", profileOnto.getDefaultNameSpace() + key.toString(), userURI);
+						}
+					}
+				}
+				
+				saveProfileOnto();
+				return userURI;
+			}
+			else
+				return userTest.get(0);
+		} //if (userID != null)
+		else 
+			return null;
+	} //addUser
+	
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#removeUser(java.lang.String)
+	 */
+	@Override
+	public boolean removeUser(String userID) {
+	
+		List<String> users = profileOnto.findResourceInstancesWithURL(profileOnto.getDefaultNameSpace() + "User", userID);
+		
+		if (!users.isEmpty()) {
+			for (String user : users) {
+				profileOnto.removeOInstance(user);
+			}
+			saveProfileOnto();
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#updateUserData(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void updateUserData(String userID, String dataName, String value) {
+		
+		Set<String> userURI = profileOnto.getOInstances(profileOnto.getDefaultNameSpace() + "User", false);
+		
+		if (!userURI.isEmpty()) {
+			if (profileOnto.isDatatypeProperty(profileOnto.getDefaultNameSpace() + dataName)) {
+				profileOnto.updateDataPropertyValue(userURI.toArray()[0].toString(), profileOnto.getDefaultNameSpace() + dataName, value);
+				saveProfileOnto();
+			}
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see ubi.analytic.SemanticIndexer.SII#doProfileUpdate(java.util.List, ubi.analytic.MetadataMap)
+	 */
+
+	@Override
+	public void doProfileUpdate(List<MetadataMap> annotations, MetadataMap metadata, String ontoURI) {
+
+		List<String> recursos = profileOnto.findResourceInstancesWithURL(profileOnto.getDefaultNameSpace() + "Resource", metadata.get("URL").toString());
+
+		for (String recurso : recursos) {
+
+			String dpValue = profileOnto.getDatatypePropertyValue(recurso, profileOnto.getDefaultNameSpace() + "tick");
+
+			//Atualiza o tick
+			try {
+				int tick = Integer.parseInt(dpValue);
+				tick++;
+				profileOnto.setDataPropertyValueForInstance(String.valueOf(tick), String.valueOf(tick - 1), profileOnto.getDefaultNameSpace() + "tick", recurso);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			//Atualiza o lastAccess
+			profileOnto.updateDataPropertyValue(recurso, profileOnto.getDefaultNameSpace() + "lastAccess", java.util.Calendar.getInstance().getTime().toString());
+		}
+
+		//se não foi encontrado recurso algum, cria novos
+		String instURI;
+		if (recursos.isEmpty()) {
+			instURI = profileOnto.addOInstance("R_", profileOnto.getDefaultNameSpace() + "Resource");
+			profileOnto.setLabelForInstance(instURI, metadata.get("URL").toString());
+
+			profileOnto.setDataPropertyValueForInstance(java.util.Calendar.getInstance().getTime().toString(), "", profileOnto.getDefaultNameSpace() + "lastAccess", instURI);
+			profileOnto.setDataPropertyValueForInstance(java.util.Calendar.getInstance().getTime().toString(), "", profileOnto.getDefaultNameSpace() + "date", instURI);
+			profileOnto.setDataPropertyValueForInstance(String.valueOf(1), "", profileOnto.getDefaultNameSpace() + "tick", instURI);
+			profileOnto.setDataPropertyValueForInstance(metadata.get("sourceURL").toString(), "", profileOnto.getDefaultNameSpace() + "sourceURL", instURI);
+			profileOnto.setDataPropertyValueForInstance(metadata.get("typeResource").toString(), "", profileOnto.getDefaultNameSpace() + "typeResource", instURI);
+		}
+		else
+			instURI = recursos.get(0);
+
+		//Elimina todas as anotações de links anteriormente. Estamos considerando que a atualização se dá
+		//de forma completa para a URL.
+		//TODO Precisamos eliminar apenas os links relativos ao domínio em questão
+		List<String> linksToDelete = profileOnto.findResourceInstancesWithURL(profileOnto.getDefaultNameSpace() + "Link", metadata.get("URL").toString());
+
+		for (String link : linksToDelete) {
+			
+//			String linkURI = profileOnto.getDatatypePropertyValueForInstance("URI", link);
+//			linkURI = linkURI.substring(0, linkURI.indexOf("#"));
+//			
+//			if (linkURI == ontoURI)
+				profileOnto.removeOInstance(link);
+		}
+
+		Set<String> linksToAdd = new HashSet<>();
+		
+		//Verifica as anotações e cria os objetos de link com a ontologia de domínio
+		for (MetadataMap annotation : annotations) {
+
+			String linkURI = profileOnto.addOInstance("L_", profileOnto.getDefaultNameSpace() + "Link");
+			profileOnto.setLabelForInstance(linkURI, metadata.get("URL").toString());
+			linksToAdd.add(linkURI);
+
+			for (Object key : annotation.keySet()) {
+				
+				if (annotation.get(key) != null) {
+					if (profileOnto.isDatatypeProperty(profileOnto.getDefaultNameSpace() + (String)key))
+						profileOnto.setDataPropertyValueForInstance(annotation.get(key).toString(), "", profileOnto.getDefaultNameSpace() + key.toString(), linkURI);
+				}
+			}
+		}
+
+		//Faz a ligação entre os resources e o link
+		for (String link : linksToAdd) {
+			profileOnto.addObjectPropertyValueForInst(profileOnto.getDefaultNameSpace() + "hasLinks", link, instURI);
+		}
+
+		//Verifca se o acesso é por um usuário
+		// ==== USER ==== ACCESS ==== \\
+		if (metadata.containsKey("UserID")) {
+			
+			//Verifica se o usuário existe: só deve retornar 1 usuário. Se retornar mais de um, há algum erro
+			List<String> user = profileOnto.findResourceInstancesWithURL(profileOnto.getDefaultNameSpace() + "User", metadata.get("UserID").toString());
+			
+			if (user.isEmpty())
+				user.add(addUser(metadata));
+
+			//Seus respectivos metadados
+			String accessURI = profileOnto.addOInstance("A_", profileOnto.getDefaultNameSpace() + "Access");
+			profileOnto.setLabelForInstance(accessURI, metadata.get("URL").toString());
+			profileOnto.setDataPropertyValueForInstance(java.util.Calendar.getInstance().getTime().toString(), "", profileOnto.getDefaultNameSpace() + "dateTime", accessURI);
+			profileOnto.setDataPropertyValueForInstance(String.valueOf(0), "", profileOnto.getDefaultNameSpace() + "accessWeight", accessURI);
+			
+			for (Object key : metadata.keySet()) {
+				
+				if (metadata.get(key) != null) {
+					if (profileOnto.isDatatypeProperty(profileOnto.getDefaultNameSpace() + (String)key))
+						profileOnto.setDataPropertyValueForInstance(metadata.get(key).toString(), "", profileOnto.getDefaultNameSpace() + key.toString(), accessURI);
+				}
+			}
+			
+			//Acesso por usuário
+			profileOnto.addObjectPropertyValueForInst(profileOnto.getDefaultNameSpace() + "accessedBy", user.get(0), accessURI);
+			
+			//Usuário acessa
+			profileOnto.addObjectPropertyValueForInst(profileOnto.getDefaultNameSpace() + "hasAccess", accessURI, user.get(0));
+			
+			//Acesso => Resource
+			profileOnto.addObjectPropertyValueForInst(profileOnto.getDefaultNameSpace() + "hasLinkedWith", instURI, accessURI);
+			
+			//Resource => Acesso
+			profileOnto.addObjectPropertyValueForInst(profileOnto.getDefaultNameSpace() + "accessedFor", accessURI, instURI);
+		}
+		
+		//TODO Veriicar como salvar as ontologias de domínio
+		saveProfileOnto();
+	}
+
+	/*
+	 * Sua funcionalidade foi absorvida pela "createConfig". Depois será criada uma opção de iniciar já com um configmap formado
+	 */
+	private void loadConfig() {
+
+		try {
+			FileInputStream fis;
+			fis = new FileInputStream(workDir + "/indexer.cfg");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			configMap = (MetadataMap) ois.readObject();
+
+			ois.close();
+			fis.close();
+
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void saveConfig() {
+
+		try {
+
+			FileOutputStream fos = new FileOutputStream(getWorkDir() + "/indexer.cfg");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);;
+			oos.writeObject(configMap);
+
+			oos.flush();
+			oos.close();
+			fos.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void createConfig() {
+
+		configMap.put("profile", workDir + "/SESProfile.owl");
+
+		File directory = new File(workDir);
+		String[] ontosNames;
+
+		FilenameFilter filter = new FilenameFilter() {
+			public boolean accept(File directory, String fileName) {
+				return fileName.endsWith(".owl");
+			}
+		};
+
+		ontosNames = directory.list(filter);
+
+		for (String ontoFile : ontosNames) {
+
+			if (ontoFile.endsWith("SESProfile.owl"))
+				continue;
+
+			try {
+				String ontoText = org.apache.commons.io.FileUtils.readFileToString(new File(workDir + "/" + ontoFile));
+				domainOnto.cleanOntology();
+				domainOnto.readOntologyData(ontoText);
+				configMap.put(domainOnto.getDefaultNameSpace(), workDir + "/" + ontoFile);
+				domainOntos.put(domainOnto.getDefaultNameSpace(), ontoText);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		try {
+			FileOutputStream fos = new FileOutputStream(workDir + "/indexer.cfg");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);;
+			oos.writeObject(configMap);
+
+			oos.close();
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void saveProfileOnto() {
+	
+		try {
+			URI uri = profileOnto.getURL().toURI();
+			FileWriter writer = new FileWriter(new File(uri));
+			profileOnto.writeOntologyData(writer, false);
+			writer.flush();
+			writer.close();
+		} catch (IOException | URISyntaxException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public float getUserInterest(String userID, String domainURI, boolean recursive) {
+		
+		//Verifica se o usuário existe: só deve retornar 1 usuário. Se retornar mais de um, há algum erro
+		List<String> user = profileOnto.findResourceInstancesWithURL(profileOnto.getDefaultNameSpace() + "User", userID);
+
+		
+		if (user.isEmpty())
+			return -1;		
+		
+		//O domínio pode ser instância ou classe
+		for (Object ontoKeys : domainOntos.keySet()) {
+			String ontoText = (String)domainOntos.get(ontoKeys);
+			domainOnto.cleanOntology();
+			domainOnto.readOntologyData(ontoText);
+
+			if (domainOnto.containsOClass(domainURI) || domainOnto.containsOInstance(domainURI)) {
+				
+				String profileText = null;
+				
+				try {
+					profileText = org.apache.commons.io.FileUtils.readFileToString(new File((String) configMap.get("profile")));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+					return -1.f;
+				}
+				return reCalc.getUserInterest(userID, domainURI, recursive, profileText, ontoText);	
+			}
+		}
+
+		return -1;
+	}
+
+	public float getResourceDomainRelation(String resourceURL, String domainURI, boolean recursive) {
+		
+		//O resource tem que ser uma instancia
+		List<String> recursos = profileOnto.findResourceInstancesWithURL(profileOnto.getDefaultNameSpace() + "Resource", resourceURL);
+		String resourceURI;
+		
+		if (recursos.isEmpty())
+			return -1;
+		else
+			resourceURI = recursos.get(0);
+		
+		//O domínio pode ser instância ou classe
+		for (Object ontoKeys : domainOntos.keySet()) {
+			String ontoText = (String)domainOntos.get(ontoKeys);
+			domainOnto.cleanOntology();
+			domainOnto.readOntologyData(ontoText);
+			
+			if (domainOnto.containsOClass(domainURI) || domainOnto.containsOInstance(domainURI)) {
+				
+				String profileText = null;
+				
+				try {
+					profileText = org.apache.commons.io.FileUtils.readFileToString(new File((String) configMap.get("profile")));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+					return -1.f;
+				}
+				
+				return reCalc.getResourceDomainRelation(resourceURI, domainURI, recursive, profileText, ontoText);
+			}
+		}
+		
+		return -1;
+	}
+}

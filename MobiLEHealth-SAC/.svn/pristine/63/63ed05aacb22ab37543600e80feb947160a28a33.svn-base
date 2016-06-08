@@ -1,0 +1,17 @@
+package mobilehealth.sac.util;
+
+import mobilehealth.sac.ontology.Resource;
+
+public class Mapper {
+	
+
+
+	public static Resource resource(String schema, String tableName, String fieldName, int fieldValue) {
+		Resource resource = null;
+		// TODO Jonathan: Obter as informações do Resource da base de dados do mobilehealth
+		
+		return resource;
+	}
+
+
+}

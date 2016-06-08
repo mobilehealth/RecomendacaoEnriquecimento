@@ -1,0 +1,51 @@
+package mobilehealth.sac.ontology;
+
+import org.joda.time.DateTime;
+
+public class Access {
+	
+	private Resource resource;
+	
+	private User user;
+	
+	private DateTime dateAccess;
+	
+	private String uri;
+	
+	public Resource getResource() {
+		return resource;
+	}
+	
+	public String getKeyOntology() {
+		return user.getPerson().getId() + resource.getKeyOntology() + dateAccess.toString();
+	}
+	
+	public void setResource(Resource resource) {
+		this.resource = resource;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public DateTime getDateAccess() {
+		return dateAccess;
+	}
+
+	public void setDateAccess(DateTime dateAccess) {
+		this.dateAccess = dateAccess;
+	}
+
+	public String getUri() {
+		return uri;
+	}
+
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+	
+}

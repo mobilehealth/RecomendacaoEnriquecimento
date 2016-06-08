@@ -1,0 +1,77 @@
+package mobilehealth.core.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+
+@Entity
+@Table(schema="public")
+@NamedQueries({
+	@NamedQuery(name = "findByAccess", query = "select u from RelatePersonContent u where u.person.id = :idPerson and u.content.id = :idContent and u.relationDate = :relationDate") 
+})
+public class RelatePersonContent {
+
+	@Id
+	@SequenceGenerator(name = "relate_person_content_seq", sequenceName = "relate_person_content_seq", schema="public")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "relate_person_content_seq")
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_person")
+	private Person person;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_content")
+	private Content content;
+	
+	@Type(type = "timestamp")
+	@Column(name = "date_relation")
+	private DateTime relationDate;
+	
+	/*
+	 * Setters and Getters
+	 */
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
+	public DateTime getRelationDate() {
+		return relationDate;
+	}
+
+	public void setRelationDate(DateTime accessDate) {
+		this.relationDate = accessDate;
+	}
+	
+}

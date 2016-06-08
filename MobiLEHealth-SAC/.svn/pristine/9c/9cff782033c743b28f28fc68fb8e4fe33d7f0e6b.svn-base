@@ -1,0 +1,67 @@
+package mobilehealth.sac.locator;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import mobilehealth.core.controller.PersonController;
+import mobilehealth.core.dao.sac.ResourceHistoryDAO;
+import mobilehealth.core.domain.Person;
+import mobilehealth.core.domain.RelatePersonContent;
+import mobilehealth.core.domain.sac.ResourceHistory;
+import mobilehealth.sac.augmentation.SemanticAugmentation;
+import mobilehealth.sac.ontology.Access;
+import mobilehealth.sac.ontology.Resource;
+import mobilehealth.sac.ontology.User;
+import mobilehealth.sac.util.Parameters;
+
+/**
+ * This class will scan MobiLEHealth database and get all users that need to go through a
+ * augmentation semantic process. This should be occur in a cycles time intervals. Should also
+ * consider the historic of processing of the user.
+ * 
+ * @author Jonathan Darlan
+ * @date 01/08/2014
+ * 
+ */
+public class AccessLocator {
+
+	public void execute() {
+
+		PersonController personController = new PersonController();
+		SemanticAugmentation semanticAugmentation = new SemanticAugmentation();
+		ResourceHistoryDAO resrouceHistoryDAO = new ResourceHistoryDAO();
+
+		/*
+		 * Get all persons to check which need to be enriched (semantic augmentation)
+		 */
+		for (Person person : personController.getAllPersons()) {
+			for (RelatePersonContent relate : person.getRelatesPersonContet()) {
+				ResourceHistory resourceHistory = resrouceHistoryDAO.findLastHistory("public", "relatePersonContent", "id", relate.getId());
+
+				/*
+				 * The content semantic augmentation is performed if the is no history or last
+				 * update is expired
+				 */
+				if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+					User user = new User();
+					user.setPerson(relate.getPerson());
+
+					Resource resource = new Resource();
+					resource.setSchema("public");
+					resource.setTableName("content");
+					resource.setFieldName("id");
+					resource.setFieldValue(relate.getContent().getId());
+
+					Access access = new Access();
+					access.setUser(user);
+					access.setResource(resource);
+					access.setDateAccess(relate.getRelationDate());
+
+					semanticAugmentation.execute(access);
+				}
+
+			}
+		}
+	}
+
+}

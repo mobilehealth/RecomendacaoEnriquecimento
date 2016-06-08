@@ -1,0 +1,2410 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#"
+     xml:base="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile">
+        <rdfs:comment>This ontology stores semantic information of content and users. </rdfs:comment>
+        <owl:versionIRI rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile/2.0"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessFor"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedBy">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedFor">
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <owl:inverseOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasAccess -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasAccess">
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <owl:inverseOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasLink -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasLink">
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasResource -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasResource">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#isLink -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#isLink">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <owl:inverseOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasLink"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#date">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#domainName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#domainName"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#domainURI -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#domainURI">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldName">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#id">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantity">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantityToken -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantityToken">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#root -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#root"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#schema -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#schema">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#tableName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#tableName">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#0">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</id>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent12014-11-22T16:34:16.623-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent22014-11-22T16:34:18.900-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent32014-11-22T16:34:19.727-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent42014-11-22T16:34:21.178-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent72014-11-22T16:34:23.077-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent12014-11-22T16:34:16.623-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent12014-11-22T16:34:16.623-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:16</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent22014-11-22T16:34:18.900-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent22014-11-22T16:34:18.900-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:18</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent32014-11-22T16:34:19.727-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent32014-11-22T16:34:19.727-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:19</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent42014-11-22T16:34:21.178-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent42014-11-22T16:34:21.178-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:21</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent72014-11-22T16:34:23.077-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent72014-11-22T16:34:23.077-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:23</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent12014-11-22T16:34:25.512-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent42014-11-22T16:34:25.790-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent52014-11-22T16:34:26.731-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent62014-11-22T16:34:28.124-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent72014-11-22T16:34:30.209-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent12014-11-22T16:34:25.512-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent12014-11-22T16:34:25.512-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:25</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent42014-11-22T16:34:25.790-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent42014-11-22T16:34:25.790-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:25</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent52014-11-22T16:34:26.731-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent52014-11-22T16:34:26.731-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:26</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent62014-11-22T16:34:28.124-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent62014-11-22T16:34:28.124-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:28</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent72014-11-22T16:34:30.209-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent72014-11-22T16:34:30.209-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:30</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent12014-11-22T16:34:32.812-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent42014-11-22T16:34:33.283-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent72014-11-22T16:34:34.161-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent12014-11-22T16:34:32.812-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent12014-11-22T16:34:32.812-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:32</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent42014-11-22T16:34:33.283-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent42014-11-22T16:34:33.283-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:33</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent72014-11-22T16:34:34.161-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent72014-11-22T16:34:34.161-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:34</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent12014-11-22T16:34:37.446-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent22014-11-22T16:34:37.766-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent32014-11-22T16:34:38.797-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent12014-11-22T16:34:37.446-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent12014-11-22T16:34:37.446-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:37</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent22014-11-22T16:34:37.766-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent22014-11-22T16:34:37.766-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:37</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent32014-11-22T16:34:38.797-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent32014-11-22T16:34:38.797-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:38</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent42014-11-22T16:34:40.447-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent52014-11-22T16:34:40.735-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent62014-11-22T16:34:41.759-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent42014-11-22T16:34:40.447-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent42014-11-22T16:34:40.447-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:40</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent52014-11-22T16:34:40.735-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent52014-11-22T16:34:40.735-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:40</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent62014-11-22T16:34:41.759-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent62014-11-22T16:34:41.759-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:41</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6publiccontent72014-11-22T16:34:43.318-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6publiccontent72014-11-22T16:34:43.318-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6publiccontent72014-11-22T16:34:43.318-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:43</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent12014-11-22T16:34:44.451-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent22014-11-22T16:34:44.903-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent32014-11-22T16:34:45.908-03:00"/>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent72014-11-22T16:34:47.508-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent12014-11-22T16:34:44.451-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent12014-11-22T16:34:44.451-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:44</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent22014-11-22T16:34:44.903-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent22014-11-22T16:34:44.903-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:44</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent32014-11-22T16:34:45.908-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent32014-11-22T16:34:45.908-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:45</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent72014-11-22T16:34:47.508-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent72014-11-22T16:34:47.508-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 04:34:47</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8publiccontent32014-11-22T17:12:17.260-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8publiccontent32014-11-22T17:12:17.260-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8publiccontent32014-11-22T17:12:17.260-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 05:12:17</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</id>
+        <hasAccess rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9publiccontent62014-11-22T17:13:05.175-03:00"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9publiccontent62014-11-22T17:13:05.175-03:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9publiccontent62014-11-22T17:13:05.175-03:00">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 05:13:05</date>
+        <accessedBy rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9"/>
+        <hasResource rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</fieldValue>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:56:44</date>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent12014-11-22T16:34:16.623-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent12014-11-22T16:34:25.512-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent12014-11-22T16:34:32.812-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent12014-11-22T16:34:37.446-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent12014-11-22T16:34:44.451-03:00"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Braço"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Diabetes"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Mão"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_atrofia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_cérebro"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_dormência"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_fadiga"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_fomeexcessiva"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_genética"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_glicose"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hemoglobinaglicada"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hiperglicemia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hipoglicemia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_insulina"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_perdadepeso"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_pâncreas"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_sangue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Braço -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Braço">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Braço</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#arm</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Diabetes -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Diabetes">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">98</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diabetes</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#diabetes</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Mão -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_Mão">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mão</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hand</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_atrofia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_atrofia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">atrofia</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#atrophy</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_cérebro -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_cérebro">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cérebro</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brain</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_dormência -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_dormência">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dormência</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Numbness</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_fadiga -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_fadiga">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fadiga</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Fatigue</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_fomeexcessiva -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_fomeexcessiva">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fome excessiva</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeHunger</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_genética -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_genética">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">genética</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#genetics</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_glicose -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_glicose">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">glicose</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#glucose</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hemoglobinaglicada -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hemoglobinaglicada">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hemoglobina glicada</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#hgb_a1c</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hiperglicemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hiperglicemia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hiperglicemia</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hyperglycemia</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hipoglicemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_hipoglicemia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hipoglicemia</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hypoglycemia</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_insulina -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_insulina">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#insulin</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">insulina</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_perdadepeso -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_perdadepeso">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#UnexplainedWeightLoss</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">perda de peso</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_pâncreas -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_pâncreas">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#pancreas</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pâncreas</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_sangue -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1_sangue">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#blood</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sangue</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</fieldValue>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:56:55</date>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent22014-11-22T16:34:18.900-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent22014-11-22T16:34:37.766-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent22014-11-22T16:34:44.903-03:00"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_blood"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_blurry"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_diabetes"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_fatigue"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_genetics"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_glucose"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hand"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hyperglycemia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hypoglycemia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_insulin"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_numbness"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_walk"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_weight"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_blood -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_blood">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blood</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#blood</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_blurry -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_blurry">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blurry</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#BlurryVision</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_diabetes -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_diabetes">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">208</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#diabetes</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_fatigue -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_fatigue">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fatigue</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Fatigue</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_genetics -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_genetics">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">genetics</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#genetics</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_glucose -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_glucose">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">glucose</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#glucose</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hand -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hand">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hand</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hand</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hyperglycemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hyperglycemia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hyperglycemia</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hyperglycemia</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hypoglycemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_hypoglycemia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hypoglycemia</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hypoglycemia</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_insulin -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_insulin">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#insulin</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">insulin</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_numbness -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_numbness">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Numbness</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">numbness</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_walk -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_walk">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#walk</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">walk</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_weight -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2_weight">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#UnexplainedWeightLoss</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weight</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:57:09</date>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</fieldValue>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent32014-11-22T16:34:19.727-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#4publiccontent32014-11-22T16:34:38.797-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent32014-11-22T16:34:45.908-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#8publiccontent32014-11-22T17:12:17.260-03:00"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_abdominal"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_blood"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_blurry"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_diabetes"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_diabetic"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_excessive"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_fatigue"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_foot"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_frequent"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_genetics"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_glucose"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_glycosylated"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hand"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hyperglycemia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hypoglycemia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_increase"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_insulin"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_itchy"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_muscle"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_numbness"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_pancreas"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_slow"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_vomiting"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_weight"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_abdominal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_abdominal">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">abdominal</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#StomachPain</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_blood -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_blood">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blood</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#blood</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_blurry -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_blurry">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blurry</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#BlurryVision</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_diabetes -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_diabetes">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">462</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#diabetes</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_diabetic -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_diabetic">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetic</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#DiabeticKetoacidosis</domainURI>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#DiabeticRetinopathy</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_excessive -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_excessive">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">excessive</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeThirst</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_fatigue -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_fatigue">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fatigue</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Fatigue</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_foot -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_foot">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">foot</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FootUlcers</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_frequent -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_frequent">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">frequent</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#FrequentUrination</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_genetics -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_genetics">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">genetics</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#genetics</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_glucose -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_glucose">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">104</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">glucose</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#glucose</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_glycosylated -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_glycosylated">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">glycosylated</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#hgb_a1c</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hand -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hand">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hand</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hand</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hyperglycemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hyperglycemia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hyperglycemia</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hyperglycemia</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hypoglycemia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_hypoglycemia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Hypoglycemia</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hypoglycemia</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_increase -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_increase">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ExtremeHunger</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increase</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_insulin -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_insulin">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">148</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#insulin</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">insulin</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_itchy -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_itchy">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#ItchySkin</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">itchy</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_muscle -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_muscle">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscle</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">muscle</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_numbness -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_numbness">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Numbness</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">numbness</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_pancreas -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_pancreas">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#pancreas</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pancreas</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_slow -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_slow">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#SlowHealing</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">slow</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_vomiting -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_vomiting">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Vomiting</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vomiting</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_weight -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3_weight">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#UnexplainedWeightLoss</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weight</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:57:22</date>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</fieldValue>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent42014-11-22T16:34:21.178-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent42014-11-22T16:34:25.790-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent42014-11-22T16:34:33.283-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent42014-11-22T16:34:40.447-03:00"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_LouGehrig"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_Ressonânciamagnética"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_atrofia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_cérebro"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_falar"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_medulaespinhal"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_neurônio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_LouGehrig -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_LouGehrig">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lou Gehrig</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amyotrophicLateralSclerosis</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_Ressonânciamagnética -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_Ressonânciamagnética">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ressonância magnética</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#magneticResonanceImaging</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_atrofia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_atrofia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">atrofia</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#atrophy</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_cérebro -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_cérebro">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cérebro</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brain</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_falar -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_falar">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">falar</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#speak</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_medulaespinhal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_medulaespinhal">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#spinalCord</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">medula espinhal</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_neurônio -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4_neurônio">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#neuron</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">neurônio</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:57:27</date>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</fieldValue>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent52014-11-22T16:34:26.731-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent52014-11-22T16:34:40.735-03:00"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_als"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_arm"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_atrophy"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_brain"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_muscle"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_neuron"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_riluzole"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_spinal"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_swallow"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_walk"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_als -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_als">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">39</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amyotrophicLateralSclerosis</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_arm -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_arm">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">arm</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#arm</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_atrophy -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_atrophy">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">atrophy</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#atrophy</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_brain -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_brain">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brain</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brain</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_muscle -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_muscle">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscle</domainURI>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleWeakness</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">muscle</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_neuron -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_neuron">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#neuron</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">neuron</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_riluzole -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_riluzole">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#riluzole</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">riluzole</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_spinal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_spinal">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#spinalCord</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">spinal</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_swallow -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_swallow">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#swallow</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swallow</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_walk -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5_walk">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#walk</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">walk</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:57:36</date>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</fieldValue>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent62014-11-22T16:34:28.124-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#5publiccontent62014-11-22T16:34:41.759-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#9publiccontent62014-11-22T17:13:05.175-03:00"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_als"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_amitriptyline"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_arm"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_atrophy"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_baclofen"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bcv"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bipap"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_blood"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_brain"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bulbar-onset"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_chew"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_cramp"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_defect"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_diazepam"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_difficulty"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_dysphagia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_emg"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_fatigue"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_gag"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_genetics"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_glucose"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_glutamate"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_hand"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_intermittent"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_lesion"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_monomelic"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_motor"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_mri"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_muscle"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_ncv"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_neuron"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_pneumonia"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_pseudobulbar"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_respiratory"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_riluzole"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_sod"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_speak"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_spinal"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_stiffness"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_swallow"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_tracheotomy"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_trihexyphenidyl"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_walk"/>
+        <hasLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_weight"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_als -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_als">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">318</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amyotrophicLateralSclerosis</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_amitriptyline -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_amitriptyline">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">amitriptyline</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amitriptyline</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_arm -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_arm">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">arm</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#arm</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_atrophy -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_atrophy">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">atrophy</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#atrophy</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_baclofen -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_baclofen">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">baclofen</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#baclofen</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bcv -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bcv">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bcv</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BCV</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bipap -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bipap">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bipap</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BIPAP</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_blood -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_blood">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">blood</root>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#blood</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_brain -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_brain">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brain</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brain</domainURI>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brainStem</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bulbar-onset -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_bulbar-onset">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bulbar-onset</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#bulbar</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_chew -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_chew">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chew</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#chewing</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_cramp -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_cramp">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cramp</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#cramping</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_defect -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_defect">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">defect</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#defectChromosome21</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_diazepam -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_diazepam">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diazepam</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#diazepam</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_difficulty -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_difficulty">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">difficulty</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dysarthria</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_dysphagia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_dysphagia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dysphagia</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dysphagia</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_emg -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_emg">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">emg</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#electromyography</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_fatigue -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_fatigue">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fatigue</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#Fatigue</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_gag -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_gag">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gag</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#gagReflex</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_genetics -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_genetics">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">genetics</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#genetics</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_glucose -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_glucose">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">glucose</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#glucose</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_glutamate -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_glutamate">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">glutamate</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#glutamate</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_hand -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_hand">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hand</root>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hand</domainURI>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_intermittent -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_intermittent">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#IPPV</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">intermittent</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_lesion -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_lesion">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#lesionMotorSystem</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lesion</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_monomelic -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_monomelic">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#monomelicAmyotrophy</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">monomelic</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_motor -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_motor">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#motorNeuroneDisease</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">motor</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_mri -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_mri">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#magneticResonanceImaging</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mri</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_muscle -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_muscle">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</quantity>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">92</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscle</domainURI>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleAtrophy</domainURI>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleSpasticity</domainURI>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleWeakness</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">muscle</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_ncv -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_ncv">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#nerveConductionVelocity</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ncv</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_neuron -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_neuron">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#neuron</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">neuron</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_pneumonia -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_pneumonia">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#pneumonia</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pneumonia</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_pseudobulbar -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_pseudobulbar">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#pseudobulbar</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pseudobulbar</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_respiratory -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_respiratory">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#respiratoryFailure</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">respiratory</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_riluzole -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_riluzole">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#riluzole</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">riluzole</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_sod -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_sod">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">42</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#superoxideDismutase</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sod</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_speak -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_speak">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#speak</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">speak</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_spinal -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_spinal">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#spinalCord</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">spinal</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_stiffness -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_stiffness">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#stiffness</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stiffness</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_swallow -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_swallow">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#swallow</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swallow</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_tracheotomy -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_tracheotomy">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#tracheotomy</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tracheotomy</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_trihexyphenidyl -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_trihexyphenidyl">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#trihexyphenidyl</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">trihexyphenidyl</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_walk -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_walk">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">als</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#walk</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">walk</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_weight -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6_weight">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <quantity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</quantity>
+        <domainName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diabetes</domainName>
+        <domainURI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.semanticweb.org/ontologies/MobiLEHealth/Diabetes#UnexplainedWeightLoss</domainURI>
+        <root rdf:datatype="http://www.w3.org/2001/XMLSchema#string">weight</root>
+        <isLink rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#publiccontent7">
+        <rdf:type rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">22/11/2014 03:57:52</date>
+        <fieldValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</fieldValue>
+        <tableName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">content</tableName>
+        <fieldName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">id</fieldName>
+        <schema rdf:datatype="http://www.w3.org/2001/XMLSchema#string">public</schema>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#1publiccontent72014-11-22T16:34:23.077-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#2publiccontent72014-11-22T16:34:30.209-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#3publiccontent72014-11-22T16:34:34.161-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#6publiccontent72014-11-22T16:34:43.318-03:00"/>
+        <accessFor rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#7publiccontent72014-11-22T16:34:47.508-03:00"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

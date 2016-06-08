@@ -1,0 +1,391 @@
+package mobilehealth.core.domain;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * 
+ * @author Jonathan Darlan
+ * @date 01/08/2014
+ * 
+ */
+
+@Entity
+@Table(schema="public")
+public class Location {
+
+	
+	private static final long serialVersionUID = 860923756561559346L;
+	
+	// Visibilidade do conteudo, definida pelo seu Autor
+	public static final int VIS_PUBLIC = 10;
+	public static final int VIS_FRIENDS = 20;
+	public static final int VIS_OWNER = 30;
+	
+	@Id
+	@SequenceGenerator(name = "location_seq", sequenceName = "location_seq", schema="public")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "location_seq")
+	private int id;
+	
+	
+	/*
+	 * Setters and Getters
+	 */
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getAltitude() {
+		return altitude;
+	}
+
+	public void setAltitude(double altitude) {
+		this.altitude = altitude;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getNeighborhood() {
+		return neighborhood;
+	}
+
+	public void setNeighborhood(String neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public int getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(int streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getCEP() {
+		return CEP;
+	}
+
+	public void setCEP(String cEP) {
+		CEP = cEP;
+	}
+
+	public String getIdGoogle() {
+		return idGoogle;
+	}
+
+	public void setIdGoogle(String idGoogle) {
+		this.idGoogle = idGoogle;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	
+	
+	
+	public void setListRelateContentLocation(List<RelateContentLocation> listRelateContentLocation) {
+		this.listRelateContentLocation = listRelateContentLocation;
+	}
+
+	
+	public List<RelateLocationTag> getListRelateLocationTag() {
+		return listRelateLocationTag;
+	}
+
+	public void setListRelateLocationTag(List<RelateLocationTag> listRelateLocationTag) {
+		this.listRelateLocationTag = listRelateLocationTag;
+	}
+	
+	public List<RelateContentLocation> getListRelateContentLocation() {
+		return listRelateContentLocation;
+	}
+
+	public List<RelatePersonLocation> getListRelatePersonLocation() {
+		return listRelatePersonLocation;
+	}
+
+	public void setListRelatePersonLocation(List<RelatePersonLocation> listRelatePersonLocation) {
+		this.listRelatePersonLocation = listRelatePersonLocation;
+	}
+	
+	public Calendar getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(Calendar dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+	
+	public float getRating() {
+		return rating;
+	}
+
+	public void setRating(float rating) {
+		this.rating = rating;
+	}
+	
+	public List<String> getListTypes() {
+		return listTypes;
+	}
+	
+	public void setListTypes(List<String> listTypes) {
+		this.listTypes = listTypes;
+	}
+	
+	public float getRateAcceptanceHere() {
+		return rateAcceptanceHere;
+	}
+
+	public void setRateAcceptanceHere(float rateAcceptanceHere) {
+		this.rateAcceptanceHere = rateAcceptanceHere;
+	}
+
+	public float getRateRatingHere() {
+		return rateRatingHere;
+	}
+
+	public void setRateRatingHere(float rateRatingHere) {
+		this.rateRatingHere = rateRatingHere;
+	}
+
+	
+	public Frequency getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(Frequency frequency) {
+		this.frequency = frequency;
+	}
+	
+	public int getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(int visibility) {
+		this.visibility = visibility;
+	}
+	
+	// Titulo
+		@Column(name = "title")
+		@Expose(serialize=true, deserialize=true)
+		private String title; 				
+		
+		// TODO Pendencia Bruno add esse atributo em person
+		// Descricao
+		@Column(name = "description")
+		@Expose(serialize=true, deserialize=true)
+		private String description; 
+		
+		@Column(name = "altitude")
+		@Expose(serialize=true, deserialize=true)
+		private double altitude;
+			
+		@Column(name = "country")
+		@Expose(serialize=true, deserialize=true)
+		private String country;
+		
+		@Column(name = "state")
+		@Expose(serialize=true, deserialize=true)
+		private String state;
+		
+		@Column(name = "city")
+		@Expose(serialize=true, deserialize=true)
+		private String city;
+		
+		@Column(name = "neighborhood")
+		@Expose(serialize=true, deserialize=true)
+		private String neighborhood;
+		
+		@Column(name = "street_name")
+		@Expose(serialize=true, deserialize=true)
+		private String streetName;
+		
+		@Column(name = "street_number")
+		@Expose(serialize=true, deserialize=true)
+		private int streetNumber;
+
+		@Column(name = "cep")
+		@Expose(serialize=true, deserialize=true)
+		private String CEP;
+		
+		@Column(name = "id_google")
+		@Expose(serialize=true, deserialize=true)
+		private String idGoogle;
+		
+		@Column(name = "latitude")
+		@Expose(serialize=true, deserialize=true)
+		private double latitude;
+		
+		@Column(name = "longitude")
+		@Expose(serialize=true, deserialize=true)
+		private double longitude;
+
+		// Data de criacao (data de insercao no BD)
+		@Temporal(TemporalType.DATE)
+		@Column(name = "date_creation")
+		@Expose(serialize=true, deserialize=true)
+		private Calendar dateCreation; 	
+		
+		// Visibilidade da existencia de um local criado (quando criado manualmente)
+		@Column(name = "visibility")
+		@Expose(serialize=true, deserialize=true)
+		private int visibility;
+		
+		// Avaliacao do local, que eh a media de todas as avaliacoes pessoais de todos os users
+		@Column(name = "rating")
+		@Expose(serialize=true, deserialize=true)
+		private float rating;
+		
+		// Taxa de aceitacao de recomendacoes (de "conteúdos") nesse local
+		@Column(name = "rate_acceptance_here")
+		@Expose(serialize=true, deserialize=true)
+		private float rateAcceptanceHere;		
+		
+		// Media das avaliacoes de conteudos nesse local
+		@Column(name = "rate_rating_here")
+		@Expose(serialize=true, deserialize=true)
+		private float rateRatingHere;	
+		
+		//------------------------------------------------------------------------
+		// 1:1
+		//------------------------------------------------------------------------
+
+		// Histograma acumulado de ACEITES e REJEICOES realizadas nesse local, por todas as pessoas
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name="id_frequency")
+		@Expose(serialize=true, deserialize=false)
+		private Frequency frequency;	
+		
+		//------------------------------------------------------------------------
+		// 1:N
+		//------------------------------------------------------------------------
+		// Lista de tipos de lugares (preenchida pela API do Google)
+		@ElementCollection
+		@CollectionTable(name ="types", joinColumns=@JoinColumn(name = "id_location"))
+		@Column(name="types")
+		@Expose(serialize=true, deserialize=false)
+		private List<String> listTypes = new ArrayList<String>();
+		
+		//------------------------------------------------------------------------
+		// N:M com atributos
+		//------------------------------------------------------------------------
+		// Lista de RELAÇÕES COM PESSOAS
+	    //@OneToMany(mappedBy="location", cascade=CascadeType.PERSIST)
+	    @OneToMany(mappedBy="location", cascade=CascadeType.ALL)
+	    @Expose(serialize=true, deserialize=false)
+	    private List<RelatePersonLocation> listRelatePersonLocation = new ArrayList<RelatePersonLocation>();	
+
+		// Lista de RELAÇÕES COM CONTEÚDOS
+		//@OneToMany(mappedBy = "location", cascade=CascadeType.PERSIST)
+		@OneToMany(mappedBy = "location", cascade=CascadeType.ALL)
+		@Expose(serialize=true, deserialize=false)
+	    private List<RelateContentLocation> listRelateContentLocation = new ArrayList<RelateContentLocation>();
+		
+	    // Lista de RELAÇÕES COM TAGS
+		// Lista de Tags que descrevem o conteudo
+	    @OneToMany(mappedBy="location", cascade=CascadeType.ALL)
+	    @Expose(serialize=true, deserialize=false)
+	    private List<RelateLocationTag> listRelateLocationTag = new ArrayList<RelateLocationTag>();
+		
+		/*
+		 * Setters and Getters
+		 */
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

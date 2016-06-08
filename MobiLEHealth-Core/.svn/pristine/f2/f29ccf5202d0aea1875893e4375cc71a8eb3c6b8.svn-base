@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MobileHealth 2.0</string>
+    
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Names of Buttons -->
+    <string name="btn_insert">Insert</string>
+    <string name="btn_cancel">Cancel</string>
+    
+
+    <!-- Name of the interface fields (registration form) -->
+    <string name="lbl_main_interface">MAIN INTERFACE</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_date">Date</string>
+    <string name="lbl_time">Time</string>
+        
+
+    <!-- Title of User Interfaces -->
+    <string name="title_activity_user_registration">USER REGISTRATION</string>
+    <string name="title_activity_glucose_monitor">GLUCOSE MONITOR</string>
+    <string name="title_activity_weight_monitor">WEIGHT MONITOR</string>
+    <string name="title_activity_temperature_monitor">TEMPERATURE MONITOR</string>
+
+</resources>

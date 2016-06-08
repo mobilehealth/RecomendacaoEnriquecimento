@@ -1,0 +1,84 @@
+package mobilehealth.sac.augmentation;
+
+import mobilehealth.sac.ontology.Access;
+import mobilehealth.sac.ontology.Resource;
+
+/**
+ * Treatments and validations of the content to be rendered.
+ * 
+ * @author Jonathan
+ * @date 25/09/2014
+ */
+public class Preprocessor {
+
+	/* Supported language */
+	public static String[] SUPPORTED_LANGUAGES = { Resource.LANGUAGE_PT, Resource.LANGUAGE_EN };
+
+	/**
+	 * Validates whether the resource can be processed by SAC
+	 * 
+	 * @param resource
+	 * @return true if the resource can be processed
+	 */
+	public static boolean validate(Access access) {
+		boolean result = true;
+
+		return result;
+	}
+
+	/**
+	 * Validates whether the resource can be processed by SAC
+	 * 
+	 * @param resource
+	 * @return true if the resource can be processed
+	 */
+	public static boolean validate(Resource resource) {
+		boolean result = true;
+
+		resource.setLanguage(getLanguageResource(resource.getText()));
+
+		result = validateSupportedLanguage(resource);
+
+		return result;
+	}
+
+	/**
+	 * Validates that the language resource is supported by content analyzer
+	 * 
+	 * @param resource
+	 * @return true if the language of resource is supported
+	 */
+	public static boolean validateSupportedLanguage(Resource resource) {
+		boolean result = false;
+
+		/*
+		 * if (false) { throw new Exception("Unsupported Language"); }
+		 */
+
+		for (String lang : SUPPORTED_LANGUAGES) {
+			if (resource.getLanguage().equalsIgnoreCase(lang)) {
+				result = true;
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * Gets language of a resource.
+	 * 
+	 * @param resource
+	 */
+	public static String getLanguageResource(String text) {
+
+		/* English language is default */
+		String lang = "en";
+		
+		//LanguageIdentifier languageIdentifier = new LanguageIdentifierImplTextalytics();
+		LanguageIdentifier languageIdentifier = new LanguageIdentifierImplLanguageDetection();
+		lang = languageIdentifier.getLanguageIdentification(text);
+
+		return lang;
+	}
+
+}

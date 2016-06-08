@@ -1,0 +1,378 @@
+package mobilehealth.sac.locator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import mobilehealth.core.dao.sac.ResourceHistoryDAO;
+import mobilehealth.core.domain.phr.healthhistory.Allergy;
+import mobilehealth.core.domain.phr.healthhistory.Condition;
+import mobilehealth.core.domain.phr.healthhistory.Immunization;
+import mobilehealth.core.domain.phr.healthhistory.LabTest;
+import mobilehealth.core.domain.phr.healthhistory.LabTestResult;
+import mobilehealth.core.domain.phr.healthhistory.Medication;
+import mobilehealth.core.domain.phr.healthhistory.Procedure;
+import mobilehealth.core.domain.sac.ResourceHistory;
+import mobilehealth.core.phr.dao.AllergyDAO;
+import mobilehealth.core.phr.dao.ConditionDAO;
+import mobilehealth.core.phr.dao.ImmunizationDAO;
+import mobilehealth.core.phr.dao.LabTestDAO;
+import mobilehealth.core.phr.dao.MedicationDAO;
+import mobilehealth.core.phr.dao.ProcedureDAO;
+import mobilehealth.sac.augmentation.SemanticAugmentation;
+import mobilehealth.sac.ontology.Access;
+import mobilehealth.sac.ontology.Resource;
+import mobilehealth.sac.ontology.User;
+import mobilehealth.sac.util.Parameters;
+
+/**
+ * This agent will scan MobiLEHealth database and get all contents that need to go through a
+ * augmentation semantic process. This should be occur in a cycles time intervals. Should also
+ * consider the historic of processing of the content.
+ * 
+ * @author Jonathan Darlan
+ * @date 04/10/2014
+ * 
+ */
+public class PrhLocator {
+
+	// TODO Jonathan: Extender Thread ou usar o JADE para criar os agentes
+	/**
+	 * 
+	 */
+	public void execute() {
+		
+		List<Access> accesses = new ArrayList<Access>();
+		SemanticAugmentation semanticAugmentation = new SemanticAugmentation();
+
+		accesses.addAll(getAllergyResources());
+		accesses.addAll(getConditionResources());
+		accesses.addAll(getImmunizationResources());
+		accesses.addAll(getLabTestResources());
+		accesses.addAll(getMedicationResources());
+		accesses.addAll(getProcedureResources());
+		
+		for(Access access : accesses) {
+			if (!access.getResource().getText().isEmpty()) {
+				semanticAugmentation.execute(access.getResource());
+			}
+			semanticAugmentation.execute(access);
+		}
+		
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private List<Access> getAllergyResources() {
+
+		String tableName = "allergy";
+		
+		List<Access> accesses = new ArrayList<Access>();
+		ResourceHistoryDAO resourceHistoryDAO = new ResourceHistoryDAO();
+		AllergyDAO allergyDAO = new AllergyDAO();
+
+		List<Allergy> allergies = allergyDAO.findAll();
+
+		for (Allergy allergy : allergies) {
+			
+			/*
+			 * The semantic augmentation is performed if the is no history or last update is expired
+			 */
+			ResourceHistory resourceHistory = resourceHistoryDAO.findLastHistory("prh", tableName, "id", allergy.getId());
+
+			if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+
+				String text = "";
+				text += allergy.getName() + "\n";
+				text += allergy.getAllergenCode() + "\n";
+				text += allergy.getType().getDescription() + "\n";
+				text += allergy.getReaction().getDescription() + "\n";
+				text += allergy.getObservation() + "\n";
+
+				/* Create resource to send processing */
+				Resource resource = new Resource();
+				resource.setSchema("prh");
+				resource.setTableName(tableName);
+				resource.setFieldName("id");
+				resource.setFieldValue(allergy.getId());
+				resource.setDateProcess(DateTime.now());
+				resource.setText(text);
+				
+				User user = new User();
+				user.setPerson(allergy.getPerson());
+				
+				Access access = new Access();
+				access.setUser(user);
+				access.setResource(resource);
+				access.setDateAccess(DateTime.now());
+				
+				accesses.add(access);
+			}
+		}
+
+		return accesses;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private List<Access> getConditionResources() {
+
+		String tableName = "condition";
+
+		List<Access> accesses = new ArrayList<Access>();
+		ResourceHistoryDAO resourceHistoryDAO = new ResourceHistoryDAO();
+		ConditionDAO conditionDAO = new ConditionDAO();
+
+		List<Condition> conditions = conditionDAO.findAll();
+
+		for (Condition condition : conditions) {
+
+			/*
+			 * The semantic augmentation is performed if the is no history or last update is expired
+			 */
+			ResourceHistory resourceHistory = resourceHistoryDAO.findLastHistory("prh", tableName, "id", condition.getId());
+
+			if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+
+				String text = "";
+				text += condition.getName() + "\n";
+				text += condition.getStatus() + "\n";
+				text += condition.getObservation() + "\n";
+
+				/* Create resource to send processing */
+				Resource resource = new Resource();
+				resource.setSchema("prh");
+				resource.setTableName(tableName);
+				resource.setFieldName("id");
+				resource.setFieldValue(condition.getId());
+				resource.setDateProcess(DateTime.now());
+				resource.setText(text);
+
+				User user = new User();
+				user.setPerson(condition.getPerson());
+				
+				Access access = new Access();
+				access.setUser(user);
+				access.setResource(resource);
+				access.setDateAccess(DateTime.now());
+				
+				accesses.add(access);
+
+			}
+		}
+
+		return accesses;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private List<Access> getImmunizationResources() {
+
+		String tableName = "immunization";
+
+		List<Access> accesses = new ArrayList<Access>();
+		ResourceHistoryDAO resourceHistoryDAO = new ResourceHistoryDAO();
+		ImmunizationDAO immunizationDAO = new ImmunizationDAO();
+
+		List<Immunization> immunizations = immunizationDAO.findAll();
+
+		for (Immunization immunization : immunizations) {
+
+			/*
+			 * The semantic augmentation is performed if the is no history or last update is expired
+			 */
+			ResourceHistory resourceHistory = resourceHistoryDAO.findLastHistory("prh", tableName, "id", immunization.getId());
+
+			if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+
+				String text = "";
+				text += immunization.getName() + "\n";
+				text += immunization.getAdverseEffect() + "\n";
+				text += immunization.getObservation() + "\n";
+
+				/* Create resource to send processing */
+				Resource resource = new Resource();
+				resource.setSchema("prh");
+				resource.setTableName(tableName);
+				resource.setFieldName("id");
+				resource.setFieldValue(immunization.getId());
+				resource.setDateProcess(DateTime.now());
+				resource.setText(text);
+
+				User user = new User();
+				user.setPerson(immunization.getPerson());
+				
+				Access access = new Access();
+				access.setUser(user);
+				access.setResource(resource);
+				access.setDateAccess(DateTime.now());
+				
+				accesses.add(access);
+			}
+		}
+
+		return accesses;
+	}
+
+	private List<Access> getLabTestResources() {
+
+		String tableName = "labtest";
+
+		List<Access> accesses = new ArrayList<Access>();
+		ResourceHistoryDAO resourceHistoryDAO = new ResourceHistoryDAO();
+		LabTestDAO labTestDAO = new LabTestDAO();
+
+		List<LabTest> labTests = labTestDAO.findAll();
+
+		for (LabTest labTest : labTests) {
+
+			/*
+			 * The semantic augmentation is performed if the is no history or last update is expired
+			 */
+			ResourceHistory resourceHistory = resourceHistoryDAO.findLastHistory("prh", tableName, "id", labTest.getId());
+
+			if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+
+				String text = "";
+				text += labTest.getLabName() + "\n";
+				text += labTest.getObservation() + "\n";
+
+				for (LabTestResult labTestResult : labTest.getResults()) {
+					text += labTestResult.getTestName() + labTestResult.getResultUnit() + " = ";
+					text += labTestResult.getResultValue() + "\n";
+					text += labTestResult.getFlag().getDescription() + "\n";
+					text += labTestResult.getObservation() + "\n";
+				}
+
+				/* Create resource to send processing */
+				Resource resource = new Resource();
+				resource.setSchema("prh");
+				resource.setTableName(tableName);
+				resource.setFieldName("id");
+				resource.setFieldValue(labTest.getId());
+				resource.setDateProcess(DateTime.now());
+				resource.setText(text);
+
+				User user = new User();
+				user.setPerson(labTest.getPerson());
+				
+				Access access = new Access();
+				access.setUser(user);
+				access.setResource(resource);
+				access.setDateAccess(DateTime.now());
+				
+				accesses.add(access);
+			}
+		}
+
+		return accesses;
+	}
+
+	private List<Access> getMedicationResources() {
+
+		String tableName = "medication";
+
+		List<Access> accesses = new ArrayList<Access>();
+		ResourceHistoryDAO resourceHistoryDAO = new ResourceHistoryDAO();
+		MedicationDAO medicationDAO = new MedicationDAO();
+
+		List<Medication> medications = medicationDAO.findAll();
+
+		for (Medication medication : medications) {
+
+			/*
+			 * The semantic augmentation is performed if the is no history or last update is expired
+			 */
+			ResourceHistory resourceHistory = resourceHistoryDAO.findLastHistory("prh", tableName, "id", medication.getId());
+
+			if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+
+				String text = "";
+				text += medication.getName() + "\n";
+				// text += medication.getStrength() + " = " + medication.getStrengthUnit() + "\n";
+				// text += medication.getDosage() + " = " + medication.getDosageUnit() + "\n";
+				text += medication.getHowTaken() + "\n";
+				text += medication.getReasonTaking() + "\n";
+				text += medication.getInstruction() + "\n";
+
+				/* Create resource to send processing */
+				Resource resource = new Resource();
+				resource.setSchema("prh");
+				resource.setTableName(tableName);
+				resource.setFieldName("id");
+				resource.setFieldValue(medication.getId());
+				resource.setDateProcess(DateTime.now());
+				resource.setText(text);
+
+				User user = new User();
+				user.setPerson(medication.getPerson());
+				
+				Access access = new Access();
+				access.setUser(user);
+				access.setResource(resource);
+				access.setDateAccess(DateTime.now());
+				
+				accesses.add(access);
+			}
+		}
+
+		return accesses;
+	}
+
+	private List<Access> getProcedureResources() {
+
+		String tableName = "procedure";
+
+		List<Access> accesses = new ArrayList<Access>();
+		ResourceHistoryDAO resourceHistoryDAO = new ResourceHistoryDAO();
+		ProcedureDAO procedureDAO = new ProcedureDAO();
+
+		List<Procedure> procedures = procedureDAO.findAll();
+
+		for (Procedure procedure : procedures) {
+
+			/*
+			 * The semantic augmentation is performed if the is no history or last update is expired
+			 */
+			ResourceHistory resourceHistory = resourceHistoryDAO.findLastHistory("prh", tableName, "id", procedure.getId());
+
+			if (resourceHistory == null || Days.daysBetween(new DateTime(resourceHistory.getRegistrationDate()), DateTime.now()).getDays() > Parameters.DAYS_FOR_REPROCESSING) {
+
+				String text = "";
+				text += procedure.getName() + "\n";
+				text += procedure.getLocationBody() + "\n";
+				text += procedure.getObservation() + "\n";
+
+				/* Create resource to send processing */
+				Resource resource = new Resource();
+				resource.setSchema("prh");
+				resource.setTableName(tableName);
+				resource.setFieldName("id");
+				resource.setFieldValue(procedure.getId());
+				resource.setDateProcess(DateTime.now());
+				resource.setText(text);
+
+				User user = new User();
+				user.setPerson(procedure.getPerson());
+				
+				Access access = new Access();
+				access.setUser(user);
+				access.setResource(resource);
+				access.setDateAccess(DateTime.now());
+				
+				accesses.add(access);
+			}
+		}
+
+		return accesses;
+	}
+
+}

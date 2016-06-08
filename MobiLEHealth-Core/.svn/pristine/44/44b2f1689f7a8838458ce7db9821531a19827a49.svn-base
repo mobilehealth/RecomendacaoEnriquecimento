@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#"
+     xml:base="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile">
+        <rdfs:comment>This ontology stores semantic information of content and users. </rdfs:comment>
+        <owl:versionIRI rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile/2.0"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedBy">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedFor">
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <owl:inverseOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasAccess -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasAccess">
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User"/>
+        <owl:inverseOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#accessedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasLink -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasLink">
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasResource -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasResource">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access"/>
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#isLink -->
+
+    <owl:ObjectProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#isLink">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+        <rdfs:range rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+        <owl:inverseOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#hasLink"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#date">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#domainURI -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#domainURI">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldName">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#fieldValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#id">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#general"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantity">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantityToken -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#quantityToken">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource">
+        <rdfs:domain rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#schema -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#schema">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#tableName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#tableName">
+        <rdfs:subPropertyOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#resource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Access">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Link">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Resource">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User -->
+
+    <owl:Class rdf:about="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#User">
+        <rdfs:subClassOf rdf:resource="http://www.ufersa.edu.br/ppgcc/mobilehealth/userprofile#Profile"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

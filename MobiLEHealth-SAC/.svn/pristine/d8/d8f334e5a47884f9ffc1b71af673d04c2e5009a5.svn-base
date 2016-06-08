@@ -1,0 +1,174 @@
+package mobilehealth.sac.ontology;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import mobilehealth.sac.augmentation.LanguageIdentifierImplTextalytics;
+
+import org.joda.time.DateTime;
+
+public class Resource {
+
+	public static String LANGUAGE_EN = "en";
+	public static String LANGUAGE_PT = "pt";
+
+	private String uri;
+
+	private String schema;
+
+	private String tableName;
+
+	/*
+	 * Primary key field name
+	 */
+	private String fieldName;
+
+	/*
+	 * Primary key value
+	 */
+	private int fieldValue;
+
+	private String text;
+
+	private List<Link> links;
+
+	private DateTime dateProcess;
+
+	private List<Access> access;
+
+	private String language;
+
+	private int quantityToken;
+
+	public Resource() {
+		access = new ArrayList<Access>();
+		links = new ArrayList<Link>();
+	}
+
+	public String getUri() {
+		return uri;
+	}
+
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+
+	public String getSchema() {
+		return schema;
+	}
+
+	public void setSchema(String schema) {
+		this.schema = schema;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+	/**
+	 * 
+	 * @return primary key field name of table
+	 */
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	/**
+	 * Filed name representing the primary key of table.
+	 * 
+	 * @param fieldName
+	 */
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+
+	/**
+	 * 
+	 * @return primary key value of table.
+	 */
+	public int getFieldValue() {
+		return fieldValue;
+	}
+
+	/**
+	 * Primary key value of table.
+	 * 
+	 * @param fieldValue
+	 */
+	public void setFieldValue(int fieldValue) {
+		this.fieldValue = fieldValue;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		
+		/* Defines language of resource */
+		if (!text.isEmpty()) {
+			LanguageIdentifierImplTextalytics languageIndentifier = new LanguageIdentifierImplTextalytics();
+			String lang = languageIndentifier.getLanguageIdentification(text);
+			if(lang.isEmpty()) {
+				setLanguage(lang);
+			}
+		}
+		
+		this.text = text;
+	}
+
+	public List<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(List<Link> links) {
+		for (Link link : links) {
+			link.setResource(this);
+		}
+		this.links = links;
+	}
+
+	public DateTime getDateProcess() {
+		return dateProcess;
+	}
+
+	public void setDateProcess(DateTime dateProcess) {
+		this.dateProcess = dateProcess;
+	}
+
+	public List<Access> getAccess() {
+		return access;
+	}
+
+	public void setAccess(List<Access> access) {
+		this.access = access;
+	}
+
+	public String getName() {
+		return getTableName() + getFieldValue();
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public int getQuantityToken() {
+		return quantityToken;
+	}
+
+	public void setQuantityToken(int quantityToken) {
+		this.quantityToken = quantityToken;
+	}
+
+	public String getKeyOntology() {
+		return schema + tableName + fieldValue;
+	}
+}

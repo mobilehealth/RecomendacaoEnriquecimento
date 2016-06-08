@@ -1,0 +1,181 @@
+package mobilehealth.core.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="times", schema="public")
+public class Times implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name = "times_id_seq", sequenceName = "times_id_seq", allocationSize = 1) 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "times_id_seq")  
+	@Column(name = "id")
+	private int id;
+	
+	// Histograma de TODAS as acoes realizadas pelo usuario
+	@Column(name = "h24_actions")
+	private String h24Actions = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"; 	
+	
+	// Histograma de TODAS as acoes realizadas pelo usuario
+	@Column(name = "h7_actions")
+	private String h7Actions = "0,0,0,0,0,0,0";
+
+	//---------------------------------------------------------------------------------------------------
+	// Metodos auxiliares
+	//---------------------------------------------------------------------------------------------------
+	
+	public int[] getH24ActionsV() 
+    {
+    	String[] strArray = h24Actions.split(",");	// diferenca
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		arrayInt[i] = Integer.parseInt(strArray[i]);
+    	}
+    	
+    	return arrayInt;
+	}
+	
+	public int[] getH7ActionsV() 
+    {
+    	String[] strArray = h7Actions.split(",");	// diferenca
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		arrayInt[i] = Integer.parseInt(strArray[i]);
+    	}
+    	
+    	return arrayInt;
+	}
+	
+	
+	public void plusH24Actions(int hour) 
+	{
+		// String para Array
+    	String[] strArray = h24Actions.split(",");	// diferenca
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == hour) {
+    			arrayInt[i] = Integer.parseInt(strArray[i]) + 1;
+    		}
+    		else {
+    			arrayInt[i] = Integer.parseInt(strArray[i]);
+    		}
+    	}
+    	
+    	// Array para String
+    	String str = "";
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == strArray.length-1) {
+    			str = str + arrayInt[i] + "";
+    		}
+    		else {
+    			str = str + arrayInt[i] + ",";
+    		}
+    	}
+    	
+    	h24Actions = str;	// diferenca
+	}
+	
+	
+	public void plusH7Actions(int day) 
+	{
+		// String para Array
+    	String[] strArray = h7Actions.split(",");	// diferenca
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == day) {
+    			arrayInt[i] = Integer.parseInt(strArray[i]) + 1;
+    		}
+    		else {
+    			arrayInt[i] = Integer.parseInt(strArray[i]);
+    		}
+    	}
+    	
+    	// Array para String
+    	String str = "";
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == strArray.length-1) {
+    			str = str + arrayInt[i] + "";
+    		}
+    		else {
+    			str = str + arrayInt[i] + ",";
+    		}
+    	}
+    	
+    	h7Actions = str;	// diferenca
+	}
+	
+	
+	public int getSumH24Actions()
+	{
+		int result = 0;
+		
+    	String[] strArray = h24Actions.split(",");		// diferenca
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		result = result + Integer.parseInt(strArray[i]);
+    	}
+		
+		return result;
+	}
+	
+	
+	public int getSumH7Actions()
+	{
+		int result = 0;
+		
+    	String[] strArray = h7Actions.split(",");		// diferenca
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		result = result + Integer.parseInt(strArray[i]);
+    	}
+		
+		return result;
+	}
+	
+	
+	//---------------------------------------------------------------------------------------------------
+	// Getters and Setters
+	//---------------------------------------------------------------------------------------------------
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getH24Actions() {
+		return h24Actions;
+	}
+
+	public void setH24Actions(String h24Actions) {
+		this.h24Actions = h24Actions;
+	}
+
+	public String getH7Actions() {
+		return h7Actions;
+	}
+
+	public void setH7Actions(String h7Actions) {
+		this.h7Actions = h7Actions;
+	}
+	
+}

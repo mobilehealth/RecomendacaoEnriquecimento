@@ -1,0 +1,291 @@
+package mobilehealth.core.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.swing.JOptionPane;
+
+import org.eclipse.persistence.jpa.JpaHelper;
+import org.eclipse.persistence.queries.QueryByExamplePolicy;
+import org.eclipse.persistence.queries.ReadObjectQuery;
+
+
+public class GenericDAO<T> {
+	
+	protected EntityManager em;
+
+	protected Class<T> entityClass;
+	
+	public GenericDAO(Class<T> entityClass) {
+		em = EntityManagerDAO.getInstance().getEntityManager();
+		this.entityClass = entityClass;
+	}
+	
+	public GenericDAO() {
+		
+		this.entityClass = null;
+	}
+	
+	public void close() {
+		EntityManagerDAO.getInstance().close();
+	}
+	
+	
+	
+	public void save(T entity) {
+		
+			em.getTransaction().begin();
+			em.persist(entity);
+			em.flush();
+			em.getTransaction().commit();
+	
+	}
+
+	public void delete(T entity) {
+		T entityToBeRemoved = em.merge(entity);
+		em.remove(entityToBeRemoved);
+	}
+
+	public T update(T entity) {
+		
+		em.getTransaction().begin();
+		T result = em.merge(entity);
+		em.flush();
+		em.getTransaction().commit();
+		return result; 
+		
+	}
+
+	public T find(int entityID) {
+		return em.find(entityClass, entityID);
+	}
+	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<T> findAll() {
+		CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+		cq.select(cq.from(entityClass));
+		return em.createQuery(cq).getResultList();
+	}
+
+	
+	
+	
+	
+	
+	@SuppressWarnings("unchecked")
+	protected T findOneResult(String namedQuery, Map<String, Object> parameters) {
+		T result = null;
+
+		try {
+			Query query = em.createNamedQuery(namedQuery);
+
+			if (parameters != null && !parameters.isEmpty()) {
+				populateQueryParameters(query, parameters);
+			}
+
+			result = (T) query.getSingleResult();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	protected T findResults(String namedQuery, Map<String, Object> parameters) {
+		T result = null;
+
+		try {
+			Query query = em.createNamedQuery(namedQuery);
+
+			if (parameters != null && !parameters.isEmpty()) {
+				populateQueryParameters(query, parameters);
+			}
+
+			result = (T) query.getResultList();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	private void populateQueryParameters(Query query,
+			Map<String, Object> parameters) {
+		for (Entry<String, Object> entry : parameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
+	}
+	
+
+	
+	/************************************************************************
+		Metódos  usados na recomendação (Criado por Jerffeson)
+	************************************************************************/
+	
+	
+	public T getById(Object id) 
+    {
+    	T entity = null;
+    	
+    	try
+    	{
+    		entity = (T) em.find(entityClass, id);
+    	}
+        catch (Exception e) 
+        {
+        	e.printStackTrace();
+        }
+    	
+        return entity;
+    }
+	
+	
+	public List<T> Teste(Integer id){
+		
+	
+		String hql = "SELECT u.d FROM RelatePersonContent As  u WHERE u.id_person = :id_person";
+		
+		Query query = em.createQuery(hql); 
+		query.setParameter("id_person", id);
+		
+		
+		List<T> results = query.getResultList();
+
+		return results;
+	}
+	
+	
+ 
+    public boolean removeById(Object id)
+    {
+    	boolean flagOK = false;
+    	
+    	try 
+    	{
+	        T entity = getById(id);
+	        
+	        if(entity != null)
+	        {
+	        	em.getTransaction().begin();
+	        	em.remove(entity);
+	        	em.getTransaction().commit();
+	        	flagOK = true;
+	        }
+        } 
+    	catch (Exception e) 
+        {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+    	
+		return flagOK;
+    }
+    
+   
+ 
+    
+
+	public int getCount() 
+	{
+		Integer i = 0;
+		
+		try
+		{
+	    	Query query = em.createQuery("SELECT count(r.id) FROM " + entityClass.getName() + " r");
+			Long l = (long) query.getSingleResult();
+			i = Integer.valueOf(l.toString());  
+			
+		}
+    	catch (Exception e) 
+        {
+            e.printStackTrace();
+        }
+		//System.out.println("count = " + typeClass.getName() + " = " + i);
+    	return i;
+	}
+	
+	public int getLastId() 
+	{
+		Integer i = 0;
+		
+		try
+		{
+	    	Query query = em.createQuery("SELECT max(r.id) FROM " + entityClass.getName() + " r");
+			Long l = (long) query.getSingleResult();
+			i = Integer.valueOf(l.toString());
+		}
+		catch (Exception e) 
+	    {
+	        e.printStackTrace();
+	    }
+		
+    	return i;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> findByExample(final T example) 
+	    {
+		
+			List<T> list = new ArrayList<>();
+	    	
+	    	try
+	    	{
+		    	QueryByExamplePolicy queryByExamplePolicy = new QueryByExamplePolicy();
+		    	queryByExamplePolicy.excludeDefaultPrimitiveValues();
+		    	ReadObjectQuery readObjectQuery = new ReadObjectQuery(example, queryByExamplePolicy);
+		
+		    	// Encapsula a consulta nativa em uma consulta JPA e a executa
+		    	Query query = JpaHelper.createQuery(readObjectQuery, em); 
+				list = query.getResultList(); 
+	    	}
+	    	catch (Exception e) 
+	        {
+	    		e.printStackTrace();
+	        }
+	    	
+	    	return list; 
+		}
+	  
+	  
+
+	  @SuppressWarnings("unchecked")
+		public T findOneByExample(final T example) 
+	    {
+	    	T entity = null;
+	    	
+	    	try 
+	    	{
+	    		
+	    		
+		    	QueryByExamplePolicy queryByExamplePolicy = new QueryByExamplePolicy();
+		    	queryByExamplePolicy.excludeDefaultPrimitiveValues();
+		    	ReadObjectQuery readObjectQuery = new ReadObjectQuery(example, queryByExamplePolicy);
+
+	        	// Wrap the native query in a standard JPA Query and execute it 
+	        	Query query = JpaHelper.createQuery(readObjectQuery, em);
+	    		entity = (T) query.getSingleResult(); 
+	    	}
+	    	catch (NoResultException e) 
+	        {
+	    		//System.out.println("Nao encontrou nada no BD (findOneByExample)");
+	        }
+	    	catch (Exception e) 
+	    	{
+	    		e.printStackTrace();
+	    		JOptionPane.showMessageDialog(null, e);
+	    	}
+	    	
+	    	return entity;
+		} 
+
+}

@@ -1,0 +1,54 @@
+package mobilehealth.core.domain;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tag", schema="public")
+public class Tag
+{
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@SequenceGenerator(name = "tag_id_seq", sequenceName = "tag_id_seq", allocationSize = 1) 
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tag_id_seq")  
+	@Column(name = "id")
+	private Integer id;
+	
+	// nome da Tag
+	@Column(name = "name")
+	private String name;
+	
+	// ocorrencias da tag em todo o sistema
+	@Column(name = "count")
+	private int count = 0;		
+	
+	//-----------------------------------------------------------
+	// Getters and Setters
+	//-----------------------------------------------------------
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}	
+	
+}

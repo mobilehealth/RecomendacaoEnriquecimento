@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="mobilehealthPU" transaction-type="RESOURCE_LOCAL">
+  	
+  	<class>mobilehealth.core.domain.Recommendation</class>
+  	<class>mobilehealth.core.domain.Content</class>
+    <class>mobilehealth.core.domain.Location</class>
+    <class>mobilehealth.core.domain.Context</class>
+    <class>mobilehealth.core.domain.Device</class>
+    <class>mobilehealth.core.domain.ExternalAccounts</class>
+    <class>mobilehealth.core.domain.File</class>
+    <class>mobilehealth.core.domain.Frequency</class>
+    <class>mobilehealth.core.domain.Learning</class>
+    <class>mobilehealth.core.domain.Person</class>
+    <class>mobilehealth.core.domain.Privacy</class>
+    <class>mobilehealth.core.domain.RelateContentLocation</class>
+    <class>mobilehealth.core.domain.RelateContentTag</class>
+    <class>mobilehealth.core.domain.RelateLocationTag</class>
+    <class>mobilehealth.core.domain.RelatePersonContent</class>
+    <class>mobilehealth.core.domain.RelatePersonPerson</class>
+    <class>mobilehealth.core.domain.RelatePersonLocation</class>
+    <class>mobilehealth.core.domain.RelatePersonTag</class>
+    <class>mobilehealth.core.domain.Scores</class>
+    <class>mobilehealth.core.domain.Tag</class>
+    <class>mobilehealth.core.domain.Times</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.Allergy</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.AllergyReaction</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.AllergyType</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.Condition</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.ConditionStatus</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.Immunization</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.LabTest</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.LabTestResult</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.LabTestResultFlag</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.Medication</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.Procedure</class>
+    <class>mobilehealth.core.domain.Domain</class>
+    
+     
+     <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mobilehealth2" />
+      <property name="javax.persistence.jdbc.user" value="postgres" />
+      <property name="javax.persistence.jdbc.password" value="alisson" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name="show_sql" value="true"/>
+      <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+      <!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+      </properties>
+      
+      
+    <!-- <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mobilehealth2" />
+      <property name="javax.persistence.jdbc.user" value="postgres" />
+      <property name="javax.persistence.jdbc.password" value="alisson" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name="show_sql" value="true"/>
+      <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/> -->
+      <!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+      
+      
+      <!-- EclipseLink cria as tabelas automaticamente. Preciso criar apenas o bd vazio -->
+	<!-- 	<property name="eclipselink.ddl-generation" value="create-tables" />
+		<property name="eclipselink.ddl-generation.output-mode" value="database" />
+     -->  
+      
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,14 @@
+package mobilehealth.sac.test;
+
+public class SASAccessTest {
+	
+	//TODO Jonathan
+	/*
+	 * Testar o enriquecimento do acesso!
+	 * Foi incluido os resource 1, 2, 3 e 4
+	 * Usa-los para gerar access
+	 * 
+	 * 
+	 * 
+	 */
+}

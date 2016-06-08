@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  
+  <persistence-unit name="Ubi" transaction-type="RESOURCE_LOCAL">
+    
+    <class>mobilehealth.core.domain.Content</class>
+    <class>mobilehealth.core.domain.Location</class>
+    <class>mobilehealth.core.domain.Context</class>
+    <class>mobilehealth.core.domain.Device</class>
+    <class>mobilehealth.core.domain.Domain</class>
+    <class>mobilehealth.core.domain.ExternalAccounts</class>
+    <class>mobilehealth.core.domain.File</class>
+    <class>mobilehealth.core.domain.Frequency</class>
+    <class>mobilehealth.core.domain.Learning</class>
+    <class>mobilehealth.core.domain.Person</class>
+    <class>mobilehealth.core.domain.Privacy</class>
+    <class>mobilehealth.core.domain.RelateContentLocation</class>
+    <class>mobilehealth.core.domain.RelateContentTag</class>
+    <class>mobilehealth.core.domain.RelateLocationTag</class>
+    <class>mobilehealth.core.domain.RelatePersonContent</class>
+    <class>mobilehealth.core.domain.RelatePersonPerson</class>
+    <class>mobilehealth.core.domain.RelatePersonLocation</class>
+    <class>mobilehealth.core.domain.RelatePersonTag</class>
+    <class>mobilehealth.core.domain.Scores</class>
+    <class>mobilehealth.core.domain.Tag</class>
+    <class>mobilehealth.core.domain.Times</class>
+    <class>mobilehealth.core.domain.phr.healthhistory.Allergy</class>
+    
+    
+    <properties>
+        
+        <property name="eclipselink.dialect"	value="org.eclipse.persistence.platform.database.PostgreSQLPlatform" />
+        		
+        <!-- Local -->
+		<property name="javax.persistence.jdbc.driver" 		value="org.postgresql.Driver" />
+		<property name="javax.persistence.jdbc.url" 	 	value="jdbc:postgresql://mobilehealthapp.mobi:5432/mobilehealth2" />
+		<property name="javax.persistence.jdbc.user"		value="postgres" />
+		<property name="javax.persistence.jdbc.password" 	value="teste" />
+		
+		<!-- REMOTO LES -->
+		<!--  
+		<property name="javax.persistence.jdbc.driver" 		value="org.postgresql.Driver" />
+		<property name="javax.persistence.jdbc.url" 	 	value="jdbc:postgresql://200.137.6.205:5432/ubi2500" />
+		<property name="javax.persistence.jdbc.user"		value="postgres" />
+		<property name="javax.persistence.jdbc.password" 	value="jerff" />
+		-->
+		
+		<property name="eclipselink.logging.level" value="OFF"/>
+		
+		<!-- EclipseLink cria as tabelas automaticamente. Preciso criar apenas o bd vazio -->
+		<property name="eclipselink.ddl-generation" value="create-tables" />
+		<property name="eclipselink.allow-zero-id" value="true"/>
+	
+		<property name="eclipselink.ddl-generation.output-mode" value="database" />
+		
+    </properties>
+    
+    
+    
+  </persistence-unit>
+</persistence>

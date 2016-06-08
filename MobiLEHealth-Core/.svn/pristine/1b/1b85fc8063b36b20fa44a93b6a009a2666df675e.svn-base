@@ -1,0 +1,6 @@
+Metadados by class ontology:
+
+User
+	id
+	hasAccess  -> link user with access  (is inverse of isAccess)
+	

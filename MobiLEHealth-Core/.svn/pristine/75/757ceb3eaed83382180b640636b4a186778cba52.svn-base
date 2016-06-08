@@ -1,0 +1,172 @@
+package mobilehealth.core.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.joda.time.field.DividedDateTimeField;
+
+import com.google.gson.annotations.Expose;
+
+import mobilehealth.core.dao.GenericDAO;
+import mobilehealth.core.domain.Person;
+
+@Entity
+@Table(name="device", schema="public")
+public class Device extends GenericDAO<Device>
+{
+	private static final long serialVersionUID = 1L;
+	
+	public static final int TYPE_SMARTPHONE = 1;
+	public static final int TYPE_TABLET = 2;
+	
+	public static final int HAS_NO = 0;
+	public static final int HAS_YES = 1;
+
+	// TODO Luiz, quais dados eh possível obter pela API do android?
+	
+	public Device()
+	{
+		super(Device.class);
+	}
+	
+	@Id
+	@SequenceGenerator(name = "device_id_seq", sequenceName = "device_id_seq", allocationSize = 1) 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "device_id_seq")  
+	@Column(name = "id")
+	@Expose(serialize=true, deserialize=true)
+	private int id;
+	
+	// Tipo do dispositivo
+	@Column(name = "type")
+	@Expose(serialize=true, deserialize=true)
+	private int type;
+	
+	@Column(name = "imei")
+	@Expose(serialize=true, deserialize=true)
+	private String imei;
+	
+	@Column(name = "so_version")
+	@Expose(serialize=true, deserialize=true)
+	private String soVersion;
+	
+	@Column(name = "display_width")
+	@Expose(serialize=true, deserialize=true)
+	private int displayWidth;
+	
+	@Column(name = "display_height")
+	@Expose(serialize=true, deserialize=true)
+	private int displayHeight;
+	
+	@Column(name = "product_brand")
+	@Expose(serialize=true, deserialize=true)
+	private String productBrand;
+	
+	@Column(name = "product_model")
+	@Expose(serialize=true, deserialize=true)
+	private String productModel;
+	
+	@Column(name = "network_operators")
+	@Expose(serialize=true, deserialize=true)
+	private String networkOperators; 
+	
+	@Column(name = "network_operator_now")
+	@Expose(serialize=true, deserialize=true)
+	private String networkOperatorNow; 
+	
+	//------------------------------------------------------------------
+	// N:1
+	//------------------------------------------------------------------
+	@ManyToOne
+	@JoinColumn(name="id_person")
+	@Expose(serialize=true, deserialize=false)
+	private Person person;
+	
+	//------------------------------------------------------------------------------
+	// Getters and Setters
+	//------------------------------------------------------------------------------
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public String getProductBrand() {
+		return productBrand;
+	}
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+	public String getProductModel() {
+		return productModel;
+	}
+	public void setProductModel(String productModel) {
+		this.productModel = productModel;
+	}
+	public String getSoVersion() {
+		return soVersion;
+	}
+	public void setSoVersion(String soVersion) {
+		this.soVersion = soVersion;
+	}
+	public int getDisplayWidth() {
+		return displayWidth;
+	}
+	public void setDisplayWidth(int displayWidth) {
+		this.displayWidth = displayWidth;
+	}
+	public int getDisplayHeight() {
+		return displayHeight;
+	}
+	public void setDisplayHeight(int displayHeight) {
+		this.displayHeight = displayHeight;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	public String getImei() {
+		return imei;
+	}
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+	public String getNetworkOperators() {
+		return networkOperators;
+	}
+	public void setNetworkOperators(String networkOperators) {
+		this.networkOperators = networkOperators;
+	}
+	public String getNetworkOperatorNow() {
+		return networkOperatorNow;
+	}
+	public void setNetworkOperatorNow(String networkOperatorNow) {
+		this.networkOperatorNow = networkOperatorNow;
+	}
+	@Override
+	public String toString() {
+		return "Device [id=" + id + ", type=" + type + ", imei=" + imei
+				+ ", soVersion=" + soVersion + ", displayWidth=" + displayWidth
+				+ ", displayHeight=" + displayHeight + ", productBrand="
+				+ productBrand + ", productModel=" + productModel
+				+ ", networkOperators=" + networkOperators
+				+ ", networkOperatorNow=" + networkOperatorNow + ", person="
+				+ person + "]";
+	}
+}

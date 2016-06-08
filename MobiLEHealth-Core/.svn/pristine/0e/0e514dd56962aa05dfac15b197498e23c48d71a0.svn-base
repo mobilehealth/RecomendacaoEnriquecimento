@@ -1,0 +1,387 @@
+package mobilehealth.core.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import mobilehealth.core.dao.GenericDAO;
+
+@Entity
+@Table(name="frequency", schema="public")
+public class Frequency extends GenericDAO<Frequency>
+{
+	private static final long serialVersionUID = 1L;
+	
+	public Frequency() {
+		super(Frequency.class);
+	}
+		
+
+	
+	@Id
+	@SequenceGenerator(name = "frequency_id_seq", sequenceName = "frequency_id_seq", allocationSize = 1) 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "frequency_id_seq")  
+	@Column(name = "id")
+	private Long id;
+	
+	// OBS: os histogramas sao armazenados como string para evita poluir o modelo do BD com mais tabelas
+	
+	// Histogramas de ACEITACAO nas 24 horas do dia
+	@Column(name = "h24_positive")
+	private String h24Positive = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
+	
+	// Histogramas de REJEICAO nas 24 horas do dia
+	@Column(name = "h24_negative")
+	private String h24Negative = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
+	
+	// Histogramas de ACEITACAO nos 7 dia da semana
+	@Column(name = "h7_positive")
+	private String h7Positive = "0,0,0,0,0,0,0";
+	
+	// Histogramas de REJEICAO nos 7 dia da semana
+	@Column(name = "h7_negative")
+	private String h7Negative = "0,0,0,0,0,0,0";
+	
+	//---------------------------------------------------------------------------------------------------
+	// Metodos auxiliares
+	//---------------------------------------------------------------------------------------------------
+	
+	//----------------------------------------------
+	// get array int
+	//----------------------------------------------
+	
+	public Integer[] getH24PositiveV() 
+	
+    {
+    	String[] strArray = h24Positive.split(",");
+    	Integer[] arrayInt = new Integer[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		arrayInt[i] = Integer.getInteger(strArray[i]);
+    	}
+    	
+    	return arrayInt;
+	}
+    
+	public Integer[] getH24NegativeV() 
+	{
+    	String[] strArray = h24Negative.split(",");
+    	Integer[] arrayInt = new Integer[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		arrayInt[i] = Integer.getInteger(strArray[i]);
+    	}
+    	
+    	return arrayInt;
+	}
+	
+	public Integer[] getH7PositiveV() 
+	{
+    	String[] strArray = h7Positive.split(",");
+    	Integer[] arrayInt = new Integer[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		arrayInt[i] = Integer.getInteger(strArray[i]);
+    	}
+    	
+    	return arrayInt;
+	}
+	
+	public Integer[] getH7NegativeV() 
+	{		
+    	String[] strArray = h7Negative.split(",");
+    	Integer[] arrayInt = new Integer[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		arrayInt[i] = Integer.getInteger(strArray[i]);
+    	}
+    	
+    	return arrayInt;
+	}
+	
+	//----------------------------------------------
+	// Incrementa elemento do array
+	//----------------------------------------------
+	
+	public void plusH24Positive(int hour) 
+	{
+		// String para Array
+    	String[] strArray = h24Positive.split(",");
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == hour) {
+    			arrayInt[i] = Integer.parseInt(strArray[i]) + 1;	// incremento
+    		}
+    		else {
+    			arrayInt[i] = Integer.parseInt(strArray[i]);
+    		}
+    	}
+    	
+    	// Array para String
+    	String str = "";
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == strArray.length-1) {
+    			str = str + arrayInt[i] + "";
+    		}
+    		else {
+    			str = str + arrayInt[i] + ",";
+    		}
+    	}
+    	
+    	h24Positive = str;
+	}
+	
+	public void plusH24Negative(int hour) 
+	{
+		// String para Array
+    	String[] strArray = h24Negative.split(",");
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == hour) {
+    			arrayInt[i] = Integer.parseInt(strArray[i]) + 1;	// incremento
+    		}
+    		else {
+    			arrayInt[i] = Integer.parseInt(strArray[i]);
+    		}
+    	}
+    	
+    	// Array para String
+    	String str = "";
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == strArray.length-1) {
+    			str = str + arrayInt[i] + "";
+    		}
+    		else {
+    			str = str + arrayInt[i] + ",";
+    		}
+    	}
+    	
+    	h24Negative = str;
+	}
+
+	public void plusH7Positive(int day) 
+	{
+		// String para Array
+    	String[] strArray = h7Positive.split(",");
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == day) {
+    			arrayInt[i] = Integer.parseInt(strArray[i]) + 1;	// incremento
+    		}
+    		else {
+    			arrayInt[i] = Integer.parseInt(strArray[i]);
+    		}
+    	}
+    	
+    	// Array para String
+    	String str = "";
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == strArray.length-1) {
+    			str = str + arrayInt[i] + "";
+    		}
+    		else {
+    			str = str + arrayInt[i] + ",";
+    		}
+    	}
+    	
+    	h7Positive = str;
+	}
+	
+	public void plusH7Negative(int day) 
+	{
+		// String para Array
+    	String[] strArray = h7Negative.split(",");
+    	int[] arrayInt = new int[strArray.length];
+    	
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == day) {
+    			arrayInt[i] = Integer.parseInt(strArray[i]) + 1;	// incremento
+    		}
+    		else {
+    			arrayInt[i] = Integer.parseInt(strArray[i]);
+    		}
+    	}
+    	
+    	// Array para String
+    	String str = "";
+    	for(int i = 0; i < strArray.length; i++) 
+    	{
+    		if(i == strArray.length-1) {
+    			str = str + arrayInt[i] + "";
+    		}
+    		else {
+    			str = str + arrayInt[i] + ",";
+    		}
+    	}
+    	
+    	h7Negative = str;
+	}
+	
+	//----------------------------------------------
+	// Soma array
+	//----------------------------------------------
+	
+	public int getSumH24Positive()
+	{
+		int result = 0;
+		
+    	String[] strArray = h24Positive.split(",");
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		result = result + Integer.parseInt(strArray[i]);
+    	}
+		
+		return result;
+	}
+	
+	public int getSumH24Negative()
+	{
+		int result = 0;
+		
+    	String[] strArray = h24Negative.split(",");
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		result = result + Integer.parseInt(strArray[i]);
+    	}
+		
+		return result;
+	}
+	
+	public int getSumH7Positive()
+	{
+		int result = 0;
+		
+    	String[] strArray = h7Positive.split(",");
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		result = result + Integer.parseInt(strArray[i]);
+    	}
+		
+		return result;
+	}
+	
+	public int getSumH7Negative()
+	{
+		int result = 0;
+		
+    	String[] strArray = h7Negative.split(",");
+    	
+    	for(int i = 0; i < strArray.length; i++) {
+    		result = result + Integer.parseInt(strArray[i]);
+    	}
+		
+		return result;
+	}
+	
+	//---------------------------------------------------------------------------------------------------
+	// Getters and Setters
+	//---------------------------------------------------------------------------------------------------
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getH24Positive() {
+		return h24Positive;
+	}
+
+	public void setH24Positive(String h24Positive) {
+		this.h24Positive = h24Positive;
+	}
+
+	public String getH24Negative() {
+		return h24Negative;
+	}
+
+	public void setH24Negative(String h24Negative) {
+		this.h24Negative = h24Negative;
+	}
+
+	public String getH7Positive() {
+		return h7Positive;
+	}
+
+	public void setH7Positive(String h7Positive) {
+		this.h7Positive = h7Positive;
+	}
+
+	public String getH7Negative() {
+		return h7Negative;
+	}
+
+	public void setH7Negative(String h7Negative) {
+		this.h7Negative = h7Negative;
+	}
+	
+	
+	
+	/*
+	// TODO Backup: Algoritmos que podem ser uteis
+	
+	// Somatorio geral de frequencias Positivas H24 de RelatePersonPerson
+	public int getSumFrequency_H24_Positive_PersonPerson(long idPerson) 
+	{
+		int result = 0;
+		
+		Person person = iData.getPerson(idPerson); // usuario logado
+		List<RelatePersonPerson> listRelate = person.getListRelatePersonPerson();
+		
+		for (RelatePersonPerson relate : listRelate) {
+			result = result + relate.getFrequency().getSumH24Positive();	// diferenca
+		}
+			
+		return result;
+	}
+	
+	
+	// Somatorio especifico de frequencias Positivas H24 de RelatePersonPerson
+	public int getSumFrequency_H24_Positive_PersonPerson(long idPerson, int hour) 
+	{
+		int result = 0;
+		
+		Person person = iData.getPerson(idPerson); // usuario logado
+		List<RelatePersonPerson> listRelate = person.getListRelatePersonPerson();
+		
+		for (RelatePersonPerson relate : listRelate) 
+		{
+			String str = relate.getFrequency().getH24Positive();	// diferenca
+			
+			// String para Array
+	    	String[] strArray = str.split(",");
+	    	
+	    	for(int i = 0; i < strArray.length; i++) 
+	    	{
+	    		if(i == hour) {
+	    			result = result + Integer.parseInt(strArray[i]);
+	    		}
+	    	}
+		}
+			
+		return result;
+	}
+	
+	
+	*/
+	
+	
+}

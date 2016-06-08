@@ -1,0 +1,806 @@
+package mobilehealth.core.domain;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+
+import mobilehealth.core.domain.phr.healthhistory.Allergy;
+
+import com.google.gson.annotations.Expose;
+
+
+/**
+ * 
+ * @author Jonathan Darlan
+ * @date 30/07/2014
+ * 
+ */
+
+@Entity
+@Table(name = "Person", schema="public", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
+public class Person {
+
+	public static final int STATUS_ACTIVE = 0;
+	public static final int STATUS_DELETED = 1;
+	public static final int STATUS_CREATED = 2;
+	
+	public static final int OFFLINE = 0;
+	public static final int ONLINE = 1;
+	
+	public static final int GENRE_MALE = 0;
+	public static final int GENRE_FEMALE = 1;
+	
+	public static final int RACE_BRANCA = 11;
+	public static final int RACE_PRETA = 12;
+	public static final int RACE_PARDA = 13;
+	public static final int RACE_INDIGENA = 14;
+	
+	public static final int RELIG_CATOLICO = 21;
+	public static final int RELIG_EVANGELICO = 22;
+	public static final int RELIG_ESPIRITA = 23;
+	public static final int RELIG_OUTRAS = 24;
+	public static final int RELIG_NENHUMA = 25;
+	
+	
+	
+	@Id
+	@SequenceGenerator(name = "person_seq", sequenceName = "person_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq")
+	private Integer id;
+
+	/* Unique identifier. Used as User. */
+	// Identifica unicamente usuário, além de ser um atributo de "contatos" do usuário. OBG, MANUAL, USER.
+	@Column(name = "email")
+	@Expose(serialize=true, deserialize=true)
+	private String email;
+
+
+	@Column(name = "online")
+	@Expose(serialize=true, deserialize=true)
+	private int online;	
+	
+	// TODO pendente nao esta salvando com criptografia
+	// Senha do usuário. OBG, MANUAL, USER.
+	@Column(name = "password")
+	@Expose(serialize=true, deserialize=true)
+	private String password;	
+	
+	// Status: Ativo ou Deletado (ou criado, simulação)
+	@Column(name = "status")
+	@Expose(serialize=true, deserialize=true)
+	private int status; 
+	
+	// Primeiro nome do usuário. OBG, MANUAL, USER.
+	@Column(name = "name_first")
+	@Expose(serialize=true, deserialize=true)
+	private String nameFirst; 	
+	
+	// Sobrenome do usuário. OBG, MANUAL, USER.
+	@Column(name = "name_last")
+	@Expose(serialize=true, deserialize=true)
+	private String nameLast;
+	
+	// Data de registro da conta. OBG, AUTO.
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_register")
+	@Expose(serialize=true, deserialize=true)
+	private Calendar dateRegister; 	
+	
+	// Data de nascimento, para se obter idade. OBG, MANUAL, USER.
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date_birth")
+	@Expose(serialize=true, deserialize=true)
+	private Calendar dateBirth;
+		
+	// Sexo do usuario. OBG, USER.
+	@Column(name = "genre")
+	@Expose(serialize=true, deserialize=true)
+	private int genre; 	
+	
+	@Column(name = "description")
+	@Expose(serialize=true, deserialize=true)
+	private String description; 
+	
+	// Telefone do usuario. Atributo de "contatos". USER.
+	@Column(name = "phone")
+	@Expose(serialize=true, deserialize=true)
+	private String phone; 
+	
+	// Renda do usuário (adicionado por Antônio). USER.
+	@Column(name = "income")
+	@Expose(serialize=true, deserialize=true)
+	private float income;
+	
+	// Religião do usuário, com valores constantes (adicionado por Antônio). USER.
+	@Column(name = "religion")
+	@Expose(serialize=true, deserialize=true)
+	private int religion;
+	
+	// Raça/cor do usuário, com valores constantes (adicionado por Antônio). USER.
+	@Column(name = "race")
+	@Expose(serialize=true, deserialize=true)
+	private int race;
+	
+	// Profissão do usuário (adicionado por Antônio). USER
+	//TODO Duvida vale a pena criar uma tabela de constante de profissoes (int)
+	@Column(name = "disease")
+	@Expose(serialize=true, deserialize=true)
+	private String disease;
+	
+	// Feedback que recebe de outras pessoas. Por exemplo, fakes e denuncias. AUTO. 
+	@Column(name = "rating")
+	@Expose(serialize=true, deserialize=true)
+	private float rating; 
+	
+	// Media da duracao dos conteudos visualizados. OBG, AUTO.
+	// Por exemplo, se ele tem perfil de visualizar videos grande ou pequenos
+	@Column(name = "rate_duration_contents")
+	@Expose(serialize=true, deserialize=true)
+	private float rateDurationContents; 
+	
+	//Pesos utilizados no sistema de recomendação
+	//Peso da Recomendação Colaborativa Ponderada
+	@Column(name = "p1")
+	@Expose(serialize=true, deserialize=true)
+	private float P1;
+	
+	//Peso da Recomendação Baseada em Conteúdo
+	@Column(name = "p2")
+	@Expose(serialize=true, deserialize=true)
+	private float P2;
+	
+	//Peso da Recomendação Baseada na Ubiquidade
+	@Column(name = "p3")
+	@Expose(serialize=true, deserialize=true)
+	private float P3;
+	
+	
+	// Tirar SSX
+	//Variáveis utilizadas para simular o retorno da Semelhança Semântica
+	//Semelhança Semântica com ELA
+	@Column(name = "SS1")
+	@Expose(serialize=true, deserialize=true)
+	private float SS1;
+	
+	//Semelhança Semântica com Diabetes
+	@Column(name = "SS2")
+	@Expose(serialize=true, deserialize=true)
+	private float SS2;
+	
+/*
+	//Semelhança Semântica com Direito
+	@Column(name = "SS3")
+	@Expose(serialize=true, deserialize=true)
+	private float SS3;
+	
+	//Semelhança Semântica com Contabilidade
+	@Column(name = "SS4")
+	@Expose(serialize=true, deserialize=true)
+	private float SS4;
+*/
+	//Número de Recomendações Respondidas
+	@Column(name = "nRecResp")
+	@Expose(serialize=true, deserialize=true)
+	private int nRecResp;
+	
+	//------------------------------------------------------------------------
+	// 1:1
+	//------------------------------------------------------------------------
+	
+	// Imagem de perfil do usuário. Para novos usuários uma imagem padrão é atribuida. OBG, AUTO e MANUAL. 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_file")
+	@Expose(serialize=false, deserialize=false)
+	private File file; 
+	
+	// Aspectos da aprendizagem. USER e AUTO.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_learning")
+	@Expose(serialize=false, deserialize=false)
+	private Learning learning; 	
+	
+	// Restrições de privacidade da conta. USER.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_privacy")
+	@Expose(serialize=false, deserialize=false)
+	private Privacy privacy; 	
+	
+	// Scores acumula todas as acoes realizadas por essa pessoa.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_scores")
+	@Expose(serialize=false, deserialize=false)
+	private Scores scores;
+	
+	// Histograma acumulado de TODAS as acoes realizadas por essa pessoa.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_times")
+	@Expose(serialize=false, deserialize=false)
+	private Times times;	
+	
+	// Histograma acumulado de acoes de ACEITE e de REJEICAO (de recomendacoes) realizadas por essa pessoa.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_frequency")
+	@Expose(serialize=false, deserialize=false)
+	private Frequency frequency;
+		
+	//------------------------------------------------------------------------
+	// 1:N
+	//------------------------------------------------------------------------
+	
+	// Lista de contextos, ou seja, histórico do usuário. AUTO.
+    @OneToMany(mappedBy="person", cascade=CascadeType.ALL)
+    @Expose(serialize=false, deserialize=false)
+	private List<Context> listContexts = new ArrayList<Context>(); 
+	
+	// Lista de dispositivos utilizados pelo usuário (mudança sugerida por Antônio). AUTO.
+    @OneToMany(mappedBy="person", cascade=CascadeType.ALL)
+    @Expose(serialize=false, deserialize=false)
+    private List<Device> listDevices = new ArrayList<Device>();
+	
+	// Contas em serviços externos. USER.
+    @OneToMany(mappedBy="person", cascade=CascadeType.ALL, orphanRemoval=true, targetEntity=ExternalAccounts.class, fetch=FetchType.LAZY)
+    @Expose(serialize=false, deserialize=false)
+	private List<ExternalAccounts> listExternalAccounts = new ArrayList<ExternalAccounts>();	
+
+    //------------------------------------------------------------------------
+	// N:M (com atributos, logo, simulo duas relações 1:N) 
+    //------------------------------------------------------------------------
+	// Lista de RELAÇÕES COM PESSOAS
+    // Lista de pessoas  (status: amigo, sugerido, visualiado, rejeitado). AUTO.
+    //@OneToMany(mappedBy = "person1", cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH} )
+    //@OneToMany(mappedBy = "person1", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "person1", cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+    @Expose(serialize=false, deserialize=false)
+    private List<RelatePersonPerson> listRelatePersonPerson = new ArrayList<RelatePersonPerson>();
+	
+	// Lista de RELAÇÕES COM CONTEÚDOS
+	// Lista de conteúdos  (status: criado, favorito, sugerido, visualizado, rejeitado, avaliado). AUTO.
+    // @OneToMany(mappedBy="person", cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy="person", cascade=CascadeType.ALL)
+    @Expose(serialize=false, deserialize=false)
+    private List<RelatePersonContent> listRelatePersonContent = new ArrayList<RelatePersonContent>();	
+    
+	// Lista de RELAÇÕES COM LOCAIS
+    //@OneToMany(mappedBy="person", cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy="person", cascade=CascadeType.ALL)
+    @Expose(serialize=false, deserialize=false)
+    private List<RelatePersonLocation> listRelatePersonLocation = new ArrayList<RelatePersonLocation>();	
+	
+	// Lista de RELAÇÕES COM TAGS
+	// Lista de Tags que descrevem os interesses do usuário. MANUAL. USER
+    @OneToMany(mappedBy="person", cascade=CascadeType.ALL)
+    @Expose(serialize=false, deserialize=false)
+    private List<RelatePersonTag> listRelatePersonTag = new ArrayList<RelatePersonTag>();
+
+    
+    @Column(name = "gender")
+	@Expose(serialize=true, deserialize=true)
+	private int gender;
+
+    @Column(name = "bloodType")
+	@Expose(serialize=true, deserialize=true)
+	private String bloodType;
+
+	@OneToMany(mappedBy = "person", targetEntity = RelatePersonContent.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<RelatePersonContent> relatesPersonContent;
+	
+	@OneToMany(mappedBy = "person", targetEntity = Allergy.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Allergy> allergies;
+	
+	/**
+	 * 
+	 * @return age
+	 */
+	public int getAge() {
+		Calendar calendar = Calendar.getInstance();
+		int age = calendar.get(Calendar.YEAR) - dateBirth.get(Calendar.YEAR);
+
+		if (calendar.get(Calendar.MONTH) < dateBirth.get(Calendar.MONTH)) {
+			age--;
+		} else {
+			if (calendar.get(Calendar.MONTH) == dateBirth.get(Calendar.MONTH)) {
+				if (calendar.get(Calendar.DAY_OF_MONTH) < dateBirth.get(Calendar.DAY_OF_MONTH)) {
+					age--;
+				}
+			}
+		}
+		return age;
+	}
+
+	/*
+	 * Getters and Setters
+	 */
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getNameFirst() {
+		return nameFirst;
+	}
+
+	public void setNameFirst(String nameFirst) {
+		this.nameFirst = nameFirst;
+	}
+
+	public String getNameLast() {
+		return nameLast;
+	}
+
+	public void setNameLast(String nameLast) {
+		this.nameLast = nameLast;
+	}
+
+	public Calendar getDateBirth() {
+		return dateBirth;
+	}
+
+	public void setDateBirth(Calendar dateBirth) {
+		this.dateBirth = dateBirth;
+	}
+
+	public Calendar getDateRegister() {
+		return dateRegister;
+	}
+
+	public void setDateRegister(Calendar dateRegister) {
+		this.dateRegister = dateRegister;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int genre) {
+		this.gender = genre;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public float getIncome() {
+		return income;
+	}
+
+	public void setIncome(float income) {
+		this.income = income;
+	}
+
+	public int getReligion() {
+		return religion;
+	}
+
+	public void setReligion(int religion) {
+		this.religion = religion;
+	}
+
+	public int getRace() {
+		return race;
+	}
+
+	public void setRace(int race) {
+		this.race = race;
+	}
+
+	public String getBloodType() {
+		return bloodType;
+	}
+
+	public void setBloodType(String bloodType) {
+		this.bloodType = bloodType;
+	}
+
+	public List<RelatePersonContent> getRelatesPersonContet() {
+		if(relatesPersonContent == null) {
+			relatesPersonContent = new ArrayList<RelatePersonContent>();
+		}
+		return relatesPersonContent;
+	}
+
+	public void setRelatesPersonContet(List<RelatePersonContent> relatesPersonContent) {
+		this.relatesPersonContent = relatesPersonContent;
+	}
+	
+	public String getDisease() {
+		return disease;
+	}
+
+	public void setDisease(String disease) {
+		this.disease = disease;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((bloodType == null) ? 0 : bloodType.hashCode());
+		result = prime * result
+				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
+		result = prime * result
+				+ ((dateRegister == null) ? 0 : dateRegister.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + gender;
+		result = (int) (prime * result + id);
+		result = prime * result + Float.floatToIntBits(income);
+		result = prime * result
+				+ ((nameFirst == null) ? 0 : nameFirst.hashCode());
+		result = prime * result
+				+ ((nameLast == null) ? 0 : nameLast.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result
+				+ ((disease == null) ? 0 : disease.hashCode());
+		result = prime * result + race;
+		result = prime * result + religion;
+		result = prime * result + status;
+		return result;
+	}
+	
+
+	public List<Device> getListDevices() {
+		return listDevices;
+	}
+
+	public void setListDevices(List<Device> listDevices) {
+		this.listDevices = listDevices;
+	}
+	
+	public List<Context> getListContexts() {
+		return listContexts;
+	}
+
+	public void setListContexts(List<Context> listContexts) {
+		this.listContexts = listContexts;
+	}
+	
+	public List<RelatePersonTag> getListRelatePersonTag() {
+		return listRelatePersonTag;
+	}
+
+	public void setListRelatePersonTag(List<RelatePersonTag> listRelatePersonTag) {
+		this.listRelatePersonTag = listRelatePersonTag;
+	}
+	
+	public Scores getScores() {
+		return scores;
+	}
+
+	public void setScores(Scores scores) {
+		this.scores = scores;
+	}
+	
+	public Times getTimes() {
+		return times;
+	}
+
+	public void setTimes(Times times) {
+		this.times = times;
+	}
+	
+	public int getOnline() {
+		return online;
+	}
+
+	public void setOnline(int online) {
+		this.online = online;
+	}
+	
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+	
+	public Frequency getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(Frequency frequency) {
+		this.frequency = frequency;
+	}
+	
+	public Learning getLearning() {
+		return learning;
+	}
+
+	public void setLearning(Learning learning) {
+		this.learning = learning;
+	}
+	
+	public Privacy getPrivacy() {
+		return privacy;
+	}
+
+	public void setPrivacy(Privacy privacy) {
+		this.privacy = privacy;
+	}
+	
+	public float getRating() {
+		return rating;
+	}
+
+	public void setRating(float rating) {
+		this.rating = rating;
+	}
+
+	public float getRateDurationContents() {
+		return rateDurationContents;
+	}
+
+	public void setRateDurationContents(float rateDurationContents) {
+		this.rateDurationContents = rateDurationContents;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public List<RelatePersonPerson> getListRelatePersonPerson() {
+		return listRelatePersonPerson;
+	}
+
+	public void setListRelatePersonPerson(List<RelatePersonPerson> listRelatePersonPerson) {
+		this.listRelatePersonPerson = listRelatePersonPerson;
+	}
+	
+	public void setListRelatePersonLocation(List<RelatePersonLocation> listRelatePersonLocation) {
+		this.listRelatePersonLocation = listRelatePersonLocation;
+	}
+	
+	public List<RelatePersonLocation> getListRelatePersonLocation() {
+		return listRelatePersonLocation;
+	}
+	
+	public List<ExternalAccounts> getListExternalAccounts() {
+		return listExternalAccounts;
+	}
+
+	public void setListExternalAccounts(List<ExternalAccounts> listExternalAccounts) {
+		this.listExternalAccounts = listExternalAccounts;
+	}
+	
+
+	public List<RelatePersonContent> getListRelatePersonContent() {
+		return listRelatePersonContent;
+	}
+
+	public void setListRelatePersonContent(List<RelatePersonContent> listRelatePersonContent) {
+		this.listRelatePersonContent = listRelatePersonContent;
+	}
+	
+	public ArrayList<RelatePersonContent> getListRelatePersonContent(int status) 
+	{
+		ArrayList<RelatePersonContent> list = new ArrayList<RelatePersonContent>();
+	
+		for (RelatePersonContent item : listRelatePersonContent) 
+		{
+			if(item.getStatus() == status)
+			{
+				list.add(item);
+			}
+		}
+
+		return list;
+	}
+	
+	public ArrayList<RelatePersonPerson> getListRelatePersonPerson(int status) 
+	{
+		ArrayList<RelatePersonPerson> list = new ArrayList<RelatePersonPerson>();
+	
+		for (RelatePersonPerson item : listRelatePersonPerson) 
+		{
+			if(item.getStatus() == status)
+			{
+				list.add(item);
+			}
+		}
+
+		return list;
+	}
+	
+	
+
+	
+	public float getP1() {
+		return P1;
+	}
+
+	public void setP1(float p1) {
+		this.P1 = p1;
+	}
+
+	public float getP2() {
+		return P2;
+	}
+
+	public void setP2(float p2) {
+		this.P2 = p2;
+	}
+
+	public float getP3() {
+		return P3;
+	}
+
+	public void setP3(float p3) {
+		this.P3 = p3;
+	}
+
+	public float getSS1() {
+		return SS1;
+	}
+
+	public void setSS1(float ss1) {
+		this.SS1 = ss1;
+	}
+
+	public float getSS2() {
+		return SS2;
+	}
+
+	public void setSS2(float ss2) {
+		this.SS2 = ss2;
+	}
+/*
+	public float getSS3() {
+		return SS3;
+	}
+
+	public void setSS3(float ss3) {
+		this.SS3 = ss3;
+	}
+	public float getSS4() {
+		return SS4;
+	}
+
+	public void setSS4(float ss4) {
+		this.SS4 = ss4;
+	}
+*/	
+	
+	
+	public ArrayList<RelatePersonLocation> getListRelatePersonLocation(int status) 
+	{
+		ArrayList<RelatePersonLocation> list = new ArrayList<RelatePersonLocation>();
+	
+		for (RelatePersonLocation item : listRelatePersonLocation) 
+		{
+			if(item.getStatus() == status)
+			{
+				list.add(item);
+			}
+		}
+
+		return list;
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (bloodType == null) {
+			if (other.bloodType != null)
+				return false;
+		} else if (!bloodType.equals(other.bloodType))
+			return false;
+		if (dateBirth == null) {
+			if (other.dateBirth != null)
+				return false;
+		} else if (!dateBirth.equals(other.dateBirth))
+			return false;
+		if (dateRegister == null) {
+			if (other.dateRegister != null)
+				return false;
+		} else if (!dateRegister.equals(other.dateRegister))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (gender != other.gender)
+			return false;
+		if (id != other.id)
+			return false;
+		if (Float.floatToIntBits(income) != Float.floatToIntBits(other.income))
+			return false;
+		if (nameFirst == null) {
+			if (other.nameFirst != null)
+				return false;
+		} else if (!nameFirst.equals(other.nameFirst))
+			return false;
+		if (nameLast == null) {
+			if (other.nameLast != null)
+				return false;
+		} else if (!nameLast.equals(other.nameLast))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (disease == null) {
+			if (other.disease != null)
+				return false;
+		} else if (!disease.equals(other.disease))
+			return false;
+		if (race != other.race)
+			return false;
+		if (religion != other.religion)
+			return false;
+		if (status != other.status)
+			return false;
+		return true;
+	}
+
+	
+	
+
+}

@@ -1,0 +1,56 @@
+package trash;
+
+import java.util.List;
+
+import mobilehealth.sac.augmentation.MetadataMap;
+
+public interface SemanticIndexer {
+	
+	public void finalize();
+	
+	public String getWorkDir();
+
+	public void setWorkDir(String workDir);
+	
+	public String getProfileOnto();
+	
+	public MetadataMap getDomainsOntologies();
+	
+	public String getDomainOntoForURL(String aOntologyURI);
+
+	public void addDomainOntology(String aOntology);
+
+	public void removeDomainOntology(String aOntologyURI);
+
+	public String addUser(MetadataMap metadata);
+
+	public boolean removeUser(String userID);
+
+	public void updateUserData(String userID, String dataName, String value);
+
+	public void doProfileUpdate(List<MetadataMap> annotations, MetadataMap metadata, String ontoURI);
+	
+	/**
+	 * returns an normalized number 0..1 that represents the user interest on the specified domain.
+	 * @param userID the user identifier. The value is obtained by recursive calls in the ontology's tree
+	 * where all child resource is used in the calculation. If the intent is obtain the value for all ontology
+	 * is enough send a base class URI.
+	 * @param domainURI the ontology's domain URI. 
+	 * @param recursive define if only the specified domainURI must be used or must be included all the child URIs
+	 * @return the user interest normalized
+	 */
+	public float getUserInterest(String userID, String domainURI, boolean recursive);
+
+	/**
+	 * This function calculates the relatioship between an domain resource, specified by domainURI, and 
+	 * and an content resource, specified by resourceURI. The value is normalized and are in the 0..1 interval.
+	 * 0 represents no relation between and 1, max relation.
+	 * @param resourceURI The URI of the resource being verified. This can be a web site, comment, video or
+	 * any other resource.
+	 * @param domainURI the domain resource being verified. To verify the complete domain ontology 
+	 * is enough to send a base URI.
+	 * @param recursive define if only the specified domainURI must be used or must be included all the child URIs
+	 * @return the relation between the domain and content.
+	 */
+	public float getResourceDomainRelation(String resourceURI, String domainURI, boolean recursive);
+}

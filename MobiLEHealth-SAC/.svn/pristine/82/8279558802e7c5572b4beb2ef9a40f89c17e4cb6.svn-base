@@ -1,0 +1,172 @@
+package mobilehealth.sac.semanticrepository;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import mobilehealth.core.controller.DomainController;
+import mobilehealth.core.domain.Domain;
+import mobilehealth.sac.domain.DomainData;
+
+import org.apache.commons.io.FileUtils;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAnnotation;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLEntity;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLLiteral;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+
+/**
+ * 
+ * @author Jonathan Darlan
+ * @date 25/09/2014
+ */
+public class SemanticRepository {
+
+	public static String PROFILE_FILE = "profile.owl";
+
+	// Notebook
+	public static String WORK_DIRECTORY = "D:\\dev\\ide\\eclipse\\workspaces\\mobilehealth\\MobiLEHealth-SAC\\app\\ontology";
+
+	// UFERSA
+	// private static String WORK_DIRECTORY =
+	// "C:\\dev\\ide\\workspaces\\eclipse\\mobiLEHealth\\MobiLEHealth-SAC\\app\\ontology";
+
+	public static List<String> getDomainOntologies() throws IOException {
+
+		List<String> domainOntologies = new ArrayList<String>();
+
+		DomainController domainController = new DomainController();
+		List<Domain> domains = domainController.getAllDomains();
+
+		for (Domain domain : domains) {
+			String ontologyText = FileUtils.readFileToString(new File(domain.getDomainOntologyFile()));
+			if (!ontologyText.isEmpty()) {
+				domainOntologies.add(ontologyText);
+			}
+		}
+
+		return domainOntologies;
+	}
+
+	public static List<File> getDomainOntologiesFile() {
+
+		List<File> domainOntologiesFiles = new ArrayList<File>();
+		DomainController domainController = new DomainController();
+		List<Domain> domains = domainController.getAllDomains();
+		
+		for(Domain domain : domains) {
+			if(!domain.getDomainOntologyFile().isEmpty()) {
+				domainOntologiesFiles.add(new File(domain.getDomainOntologyFile()));
+			}
+		}
+
+		return domainOntologiesFiles;
+	}
+
+	public List<DomainData> getLabels(String language) {
+
+		List<DomainData> labels = new ArrayList<DomainData>();
+		// Carregar cada ontologia
+		List<File> files = getDomainOntologiesFile();
+		for (File file : files) {
+			try {
+				OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+				OWLOntology ontology = manager.loadOntologyFromOntologyDocument(file);
+				OWLDataFactory factory = manager.getOWLDataFactory();
+				// Buscando cada classe
+				for (OWLClass cls : ontology.getClassesInSignature()) {
+					// Buscando cada indivíduo
+					for (OWLIndividual ind : cls.getIndividuals(ontology)) {
+						// Buscando cada anotação do indivíduo
+						for (OWLAnnotation annot : ((OWLEntity) ind).getAnnotations(ontology, factory.getRDFSLabel())) {
+
+							// Transformando a anotação
+							OWLLiteral val = (OWLLiteral) annot.getValue();
+							// Se label for da linguagem desejada
+							if (val.getLang().equals("") || val.getLang().equalsIgnoreCase(language)) {
+								String label = val.getLiteral();
+								// Quebrando a label para assim poder obter a quantidade de palavras
+								String[] sizeLabel = label.split(" ");
+								IRI iri = ((OWLEntity) ind).getIRI();
+
+								// criando e adicionando novo elemento na lista
+								DomainData data = new DomainData(label, iri.toString(), sizeLabel.length);
+								labels.add(data);
+							}
+
+						}
+					}
+				}
+			} catch (Exception e) {
+
+			}
+
+		}
+
+		// TODO Salatiel: seu metodo
+
+		return labels;
+	}
+
+	public List<OWLIndividual> getAllIndividuals(Domain domain) {
+
+		List<OWLIndividual> individuals = new ArrayList<OWLIndividual>();
+
+		File file = new File(domain.getDomainOntologyFile());
+
+		OWLOntology ontology;
+		try {
+			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+			ontology = manager.loadOntologyFromOntologyDocument(file);
+
+			for (OWLClass cls : ontology.getClassesInSignature()) {
+				individuals.addAll(cls.getIndividuals(ontology));
+			}
+
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+
+		return individuals;
+	}
+
+	public Domain getDomainByCompleteURI(String iri) {
+
+		Domain domainResult = null;
+
+		/*
+		 * A IRI completa vem a iri principal da ontologia + "#" + indentificardo do recurso da
+		 * ontologia (Classe, individuo, DataPropertie...) Ex.:
+		 * http://www.exemploiri.org/ontologia#sange Esse código é para obter apenas iri principal:
+		 * http://www.exemploiri.org/ontologia
+		 */
+		String ontologyIriSearched = iri.split("#")[0];
+
+		DomainController domainController = new DomainController();
+
+		for (Domain domain : domainController.getAllDomains()) {
+			try {
+				OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+				OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File(domain.getDomainOntologyFile()));
+				String ontologyIri = ontology.getOntologyID().getOntologyIRI().toString();
+				if (ontologyIriSearched.equals(ontologyIri)) {
+					domainResult = domain;
+					break;
+				}
+			} catch (OWLOntologyCreationException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		return domainResult;
+	}
+
+}

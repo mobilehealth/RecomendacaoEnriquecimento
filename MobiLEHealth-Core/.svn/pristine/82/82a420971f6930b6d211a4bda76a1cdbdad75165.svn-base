@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="mobilehealth.umc.view.GlucoseMonitor" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_glucose_monitor"
+        android:textStyle="bold" />
+
+    <TextView
+        style="@style/AppBaseTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        style="@style/AppBaseTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_date" />
+
+    <EditText
+        android:id="@+id/edt_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date" />
+
+    <TextView
+        style="@style/AppBaseTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_time" />
+
+    <EditText
+        android:id="@+id/edt_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="time" />
+
+    <TextView
+        style="@style/AppBaseTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Glucose" />
+
+    <EditText
+        android:id="@+id/edt_glucose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <TextView
+        style="@style/AppBaseTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comment" />
+
+    <EditText
+        android:id="@+id/edt_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="mobilehealth.umc.view.GlucoseMonitor" >
+
+        <Button
+            android:id="@+id/btn_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+    </LinearLayout>
+
+</LinearLayout>

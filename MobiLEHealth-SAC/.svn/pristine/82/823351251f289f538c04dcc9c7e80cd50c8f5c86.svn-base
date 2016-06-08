@@ -1,0 +1,57 @@
+package mobilehealth.sac.augmentation;
+
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+
+import mobilehealth.sac.ontology.Access;
+import mobilehealth.sac.ontology.Resource;
+import mobilehealth.sac.semanticrepository.UserProfileOntology;
+
+/**
+ * 
+ * @author Jonathan Darlan
+ * @date 07/10/2014
+ */
+public class SemanticIndexer {
+
+	private UserProfileOntology userProfile;
+
+	/**
+	 * Default Constructor
+	 */
+	public SemanticIndexer() {
+		try {
+			userProfile = new UserProfileOntology();
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Save a resource in user profile ontology.
+	 * 
+	 * @param resource
+	 */
+	public void resource(Resource resource) {
+		userProfile.saveResource(resource);
+	}
+	
+	/**
+	 * 
+	 * @param access
+	 */
+	public void access(Access access) {
+
+		if(userProfile.findAccess(access.getUser(),access.getResource(), access.getDateAccess()) == null) {
+
+			if(userProfile.findUser(access.getUser().getPerson().getId()) == null) {
+				userProfile.saveUser(access.getUser());
+			}
+			
+			Resource resource = userProfile.findResource(access.getResource().getSchema(), access.getResource().getTableName(), access.getResource().getFieldName(), access.getResource().getFieldValue());
+			access.setResource(resource);
+			userProfile.saveAccess(access);
+			
+		}
+		
+	}
+}

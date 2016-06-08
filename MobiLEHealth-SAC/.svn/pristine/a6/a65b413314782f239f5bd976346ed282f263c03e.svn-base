@@ -1,0 +1,93 @@
+package mobilehealth.sac.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.joda.time.DateTime;
+
+/**
+ * registers the history of semantic processing to all resources of MobiLEHealth database.
+ * 
+ * @author Jonathan
+ * @date 15/09/2014
+ */
+
+@Entity
+@Table(schema = "sac")
+@NamedQueries({
+	@NamedQuery(name = "LastHistory", query = "select u from ResourceHistory u where u.schema = :schema and u.table = :table and u.fieldName = :fieldName and u.fieldValue = :fieldValue order by u.registrationDate desc 1") 
+})
+public class ResourceHistory {
+
+	@Id
+	@SequenceGenerator(name = "history_seq", sequenceName = "history_seq", schema = "sac")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "history_seq")
+	private int id;
+	
+	private String schema;
+	
+	private String table;
+	
+	private String fieldName;
+	
+	private int fieldValue;
+	
+	// The time must be stored
+	private DateTime registrationDate;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getSchema() {
+		return schema;
+	}
+
+	public void setSchema(String schema) {
+		this.schema = schema;
+	}
+
+	public String getTable() {
+		return table;
+	}
+
+	public void setTable(String table) {
+		this.table = table;
+	}
+
+	public String getFieldName() {
+		return fieldName;
+	}
+
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+
+	public int getFieldValue() {
+		return fieldValue;
+	}
+
+	public void setFieldValue(int fieldValue) {
+		this.fieldValue = fieldValue;
+	}
+
+	public DateTime getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(DateTime registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+}

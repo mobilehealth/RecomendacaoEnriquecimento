@@ -1,0 +1,312 @@
+package mobilehealth.core.domain;
+
+import java.util.Calendar;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+/**
+ * 
+ * @author Jonathan Darlan
+ * @date 01/08/2014
+ * 
+ */
+
+@Entity
+@Table(schema="public")
+public class Content {
+
+	// Indentifers of content type  
+	public static final int TYPE_POST 		= 0;
+	public static final int TYPE_EVENT 		= 1;
+	public static final int TYPE_GROUP 		= 2;
+	public static final int TYPE_CHALLENGE 	= 3;
+
+	// Visibility of content. Defined by author
+	public static final int VIS_PUBLIC 		= 0;
+	public static final int VIS_FRIENDS 	= 1;
+	public static final int VIS_OWNER 		= 2;
+
+	// Subtype of POST type 
+	public static final int SUBTYPE_POST_TEXT	= 0;
+	public static final int SUBTYPE_POST_IMAGE	= 1;
+	public static final int SUBTYPE_POST_VIDEO	= 2;
+	public static final int SUBTYPE_POST_PAGE	= 3;
+	public static final int SUBTYPE_POST_FILE	= 4;
+
+	// GROUP Visibility
+	public static final int VIS_GROUP_PUBLIC = 0;
+	public static final int VIS_GROUP_CLOSED = 1;
+
+	@Id
+	@SequenceGenerator(name = "content_seq", sequenceName = "content_seq", schema="public")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "content_seq")
+	private int id;
+	
+	private int type;
+	
+	private int subtype;
+	
+	private int visibility;
+	
+	private String title;
+	
+	private String author;
+	
+	private String description;
+	
+	private Calendar dateCreation;
+	
+	private Calendar dateAdd;
+	
+	// Can be null, if a content is a text and no url  
+	private String urlOnline;
+	
+	// Size file
+	private int bytesOnline;
+	
+	// Duration to know the contents
+	private int secondsOnline;
+	
+	// Average of all rating of all users (May be calculate?)
+	private float averageRating;
+	
+	// avarage?!
+	private float acceptanceRate;
+	
+	private int visibilityGroup;
+	
+	private Calendar dateEvent;
+
+
+	/*
+	 * Setters and Getters
+	 */
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(int subtype) {
+		this.subtype = subtype;
+	}
+
+	public int getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(int visibility) {
+		this.visibility = visibility;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Calendar getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(Calendar dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
+	public Calendar getDateAdd() {
+		return dateAdd;
+	}
+
+	public void setDateAdd(Calendar dateAdd) {
+		this.dateAdd = dateAdd;
+	}
+
+	public String getUrlOnline() {
+		return urlOnline;
+	}
+
+	public void setUrlOnline(String urlOnline) {
+		this.urlOnline = urlOnline;
+	}
+
+	public int getBytesOnline() {
+		return bytesOnline;
+	}
+
+	public void setBytesOnline(int bytesOnline) {
+		this.bytesOnline = bytesOnline;
+	}
+
+	public int getSecondsOnline() {
+		return secondsOnline;
+	}
+
+	public void setSecondsOnline(int secondsOnline) {
+		this.secondsOnline = secondsOnline;
+	}
+
+	public float getAverageRating() {
+		return averageRating;
+	}
+
+	public void setAverageRating(float averageRating) {
+		this.averageRating = averageRating;
+	}
+
+	public float getAcceptanceRate() {
+		return acceptanceRate;
+	}
+
+	public void setAcceptanceRate(float acceptanceRate) {
+		this.acceptanceRate = acceptanceRate;
+	}
+
+	public int getVisibilityGroup() {
+		return visibilityGroup;
+	}
+
+	public void setVisibilityGroup(int visibilityGroup) {
+		this.visibilityGroup = visibilityGroup;
+	}
+
+	public Calendar getDateEvent() {
+		return dateEvent;
+	}
+
+	public void setDateEvent(Calendar dateEvent) {
+		this.dateEvent = dateEvent;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(acceptanceRate);
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + Float.floatToIntBits(averageRating);
+		result = prime * result + bytesOnline;
+		result = prime * result + ((dateAdd == null) ? 0 : dateAdd.hashCode());
+		result = prime * result
+				+ ((dateCreation == null) ? 0 : dateCreation.hashCode());
+		result = prime * result
+				+ ((dateEvent == null) ? 0 : dateEvent.hashCode());
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id;
+		result = prime * result + secondsOnline;
+		result = prime * result + subtype;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + type;
+		result = prime * result
+				+ ((urlOnline == null) ? 0 : urlOnline.hashCode());
+		result = prime * result + visibility;
+		result = prime * result + visibilityGroup;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Content other = (Content) obj;
+		if (Float.floatToIntBits(acceptanceRate) != Float
+				.floatToIntBits(other.acceptanceRate))
+			return false;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
+		if (Float.floatToIntBits(averageRating) != Float
+				.floatToIntBits(other.averageRating))
+			return false;
+		if (bytesOnline != other.bytesOnline)
+			return false;
+		if (dateAdd == null) {
+			if (other.dateAdd != null)
+				return false;
+		} else if (!dateAdd.equals(other.dateAdd))
+			return false;
+		if (dateCreation == null) {
+			if (other.dateCreation != null)
+				return false;
+		} else if (!dateCreation.equals(other.dateCreation))
+			return false;
+		if (dateEvent == null) {
+			if (other.dateEvent != null)
+				return false;
+		} else if (!dateEvent.equals(other.dateEvent))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id != other.id)
+			return false;
+		if (secondsOnline != other.secondsOnline)
+			return false;
+		if (subtype != other.subtype)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (type != other.type)
+			return false;
+		if (urlOnline == null) {
+			if (other.urlOnline != null)
+				return false;
+		} else if (!urlOnline.equals(other.urlOnline))
+			return false;
+		if (visibility != other.visibility)
+			return false;
+		if (visibilityGroup != other.visibilityGroup)
+			return false;
+		return true;
+	}
+	
+}

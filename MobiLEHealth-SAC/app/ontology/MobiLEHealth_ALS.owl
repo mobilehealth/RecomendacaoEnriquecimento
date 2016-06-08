@@ -1,0 +1,737 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/jdarlan/ontologies/2014/2/untitled-ontology-88#"
+     xml:base="http://www.semanticweb.org/jdarlan/ontologies/2014/2/untitled-ontology-88"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Actions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Actions">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#HumanBody"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BreathSupport -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BreathSupport">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#treatment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause">
+        <rdfs:label xml:lang="pt">Causa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cells -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cells">
+        <rdfs:label xml:lang="en">Cell</rdfs:label>
+        <rdfs:label xml:lang="pt">Células</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#HumanBody"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Condition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Condition">
+        <rdfs:label xml:lang="pt">Condição</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Diagnosis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Diagnosis">
+        <rdfs:label>Diagnosis</rdfs:label>
+        <rdfs:label xml:lang="pt">Diagnóstico</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease">
+        <rdfs:label xml:lang="pt">Doença</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug">
+        <rdfs:label>Drug</rdfs:label>
+        <rdfs:label xml:lang="pt">Medicamento</rdfs:label>
+        <rdfs:label xml:lang="pt">Remédio</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Exams -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Exams">
+        <rdfs:label>Exams</rdfs:label>
+        <rdfs:label xml:lang="pt">Exames</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health">
+        <rdfs:label>Health</rdfs:label>
+        <rdfs:label xml:lang="pt">Saúde</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#MobiLEHealth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Hormone -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Hormone">
+        <rdfs:label xml:lang="en">Hormone</rdfs:label>
+        <rdfs:label xml:lang="pt">Hormônio</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#HumanBody"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#HumanBody -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#HumanBody">
+        <rdfs:label xml:lang="en">Human Body</rdfs:label>
+        <rdfs:label xml:lang="pt">Corpo Humano</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#MobiLEHealth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#MobiLEHealth -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#MobiLEHealth"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Molecule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Molecule">
+        <rdfs:label xml:lang="en">Molecule</rdfs:label>
+        <rdfs:label xml:lang="pt">Molécula</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#MobiLEHealth"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts">
+        <rdfs:label xml:lang="en">Human Body Parts</rdfs:label>
+        <rdfs:label xml:lang="pt">Partes do Corpo Humano</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#HumanBody"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton">
+        <rdfs:label xml:lang="en">Sympton</rdfs:label>
+        <rdfs:label xml:lang="pt">Sintomas</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#treatment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#treatment">
+        <rdfs:label xml:lang="en">Treatment</rdfs:label>
+        <rdfs:label xml:lang="pt">Tratamento</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Health"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BCV -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BCV">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BreathSupport"/>
+        <rdfs:label>BCV</rdfs:label>
+        <rdfs:label xml:lang="en">Biphasic Cuirass Ventilation</rdfs:label>
+        <rdfs:label xml:lang="pt">ventilador de pressão negativa do tipo couraça</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BIPAP -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BIPAP">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BreathSupport"/>
+        <rdfs:label>BIPAP</rdfs:label>
+        <rdfs:label xml:lang="en">Bilevel Positive Airway Pressure</rdfs:label>
+        <rdfs:label xml:lang="pt">Pressão Positiva Bifásica nas Vias Aéreas</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#IPPV -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#IPPV">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BreathSupport"/>
+        <rdfs:label>IPPV</rdfs:label>
+        <rdfs:label xml:lang="en">Intermittent Positive Pressure Ventilation</rdfs:label>
+        <rdfs:label xml:lang="pt">VPPI</rdfs:label>
+        <rdfs:label xml:lang="pt">ventilação por pressão positiva intermitente</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amitriptyline -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amitriptyline">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug"/>
+        <rdfs:label xml:lang="en">Amitriptyline</rdfs:label>
+        <rdfs:label xml:lang="pt">amitriptilina</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amyotrophicLateralSclerosis -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#amyotrophicLateralSclerosis">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease"/>
+        <rdfs:label>Lou Gehrig</rdfs:label>
+        <rdfs:label xml:lang="en">Amyotrophic lateral sclerosis</rdfs:label>
+        <rdfs:label>ELA</rdfs:label>
+        <rdfs:label>ALS</rdfs:label>
+        <rdfs:label xml:lang="pt">esclerose lateral amiotrófica</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#arm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#arm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label xml:lang="en">Arm</rdfs:label>
+        <rdfs:label xml:lang="pt">Braço</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#atrophy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#atrophy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Atrophy</rdfs:label>
+        <rdfs:label xml:lang="pt">atrofia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#babinskiReflex -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#babinskiReflex">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Babinski Reflex</rdfs:label>
+        <rdfs:label xml:lang="pt">reflexo de Babinski</rdfs:label>
+        <rdfs:label xml:lang="pt">reflexo plantar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#baclofen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#baclofen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug"/>
+        <rdfs:label>Baclofen</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brain -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brain">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label xml:lang="en">Brain</rdfs:label>
+        <rdfs:label xml:lang="pt">Cérebro</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brainStem -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#brainStem">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label xml:lang="en">Brain Stem</rdfs:label>
+        <rdfs:label xml:lang="pt">Tronco Encefálico</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#bulbar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#bulbar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label>Bulbar</rdfs:label>
+        <rdfs:label xml:lang="en">Bulb</rdfs:label>
+        <rdfs:label xml:lang="en">Medulla Oblongata</rdfs:label>
+        <rdfs:label xml:lang="pt">Bulbo</rdfs:label>
+        <rdfs:label xml:lang="pt">medula Oblonga</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#chewing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#chewing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Actions"/>
+        <rdfs:label xml:lang="en">Chewing</rdfs:label>
+        <rdfs:label xml:lang="pt">Mastigar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#cramping -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#cramping">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Cramping</rdfs:label>
+        <rdfs:label xml:lang="pt">cólicas</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#defectChromosome21 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#defectChromosome21">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause"/>
+        <rdfs:label xml:lang="en">defect on chromosome 21</rdfs:label>
+        <rdfs:label xml:lang="pt">Defeito no cromossomo 21</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#degenerationMotorNeurons -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#degenerationMotorNeurons">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label>DMN</rdfs:label>
+        <rdfs:label xml:lang="en">Degeneration Motor Neurons</rdfs:label>
+        <rdfs:label xml:lang="pt">DNM</rdfs:label>
+        <rdfs:label xml:lang="pt">Degeneração do Neurônio Motor</rdfs:label>
+        <rdfs:label xml:lang="pt">Doença do Neurônio Motor</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#diazepam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#diazepam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug"/>
+        <rdfs:label>Diazepam</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dysarthria -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dysarthria">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Dysarthria</rdfs:label>
+        <rdfs:label xml:lang="en">difficulty speaking</rdfs:label>
+        <rdfs:label xml:lang="pt">dificuldade em falar</rdfs:label>
+        <rdfs:label xml:lang="pt">disartria</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dysphagia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dysphagia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Difficulty Swallowing</rdfs:label>
+        <rdfs:label xml:lang="en">Dysphagia</rdfs:label>
+        <rdfs:label xml:lang="pt">dificuldade em engolir</rdfs:label>
+        <rdfs:label xml:lang="pt">disfagia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dyspnea -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#dyspnea">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Dyspnea</rdfs:label>
+        <rdfs:label xml:lang="en">difficulty breathing</rdfs:label>
+        <rdfs:label xml:lang="pt">dificuldade em respirar</rdfs:label>
+        <rdfs:label xml:lang="pt">dispnéia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#electromyography -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#electromyography">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Exams"/>
+        <rdfs:label>EMG</rdfs:label>
+        <rdfs:label xml:lang="en">Electromyography</rdfs:label>
+        <rdfs:label xml:lang="pt">eletromiografia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#gagReflex -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#gagReflex">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Gag Reflex</rdfs:label>
+        <rdfs:label xml:lang="en">Pharyngeal reflex</rdfs:label>
+        <rdfs:label xml:lang="pt">reflexo de engasgo</rdfs:label>
+        <rdfs:label xml:lang="pt">reflexo faríngeo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#genetics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#genetics">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause"/>
+        <rdfs:label xml:lang="en">Genetics</rdfs:label>
+        <rdfs:label xml:lang="pt">genética</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#glutamate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#glutamate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Molecule"/>
+        <rdfs:label xml:lang="en">glutamate</rdfs:label>
+        <rdfs:label xml:lang="pt">glutamato</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hand -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hand">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label xml:lang="en">Hand</rdfs:label>
+        <rdfs:label xml:lang="pt">Mão</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hereditaryFactor -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#hereditaryFactor">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause"/>
+        <rdfs:label xml:lang="en">Hereditary Factor</rdfs:label>
+        <rdfs:label xml:lang="pt">Fator hereditário</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#lesionMotorSystem -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#lesionMotorSystem">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause"/>
+        <rdfs:label xml:lang="en">lesion to the motor system</rdfs:label>
+        <rdfs:label xml:lang="pt">lesão do sistema motor</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#lossControlMovements -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#lossControlMovements">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Loss of Control of Movements</rdfs:label>
+        <rdfs:label xml:lang="pt">Perda de Controle de Movimentos</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#magneticResonanceImaging -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#magneticResonanceImaging">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Exams"/>
+        <rdfs:label>MRI</rdfs:label>
+        <rdfs:label>IRM</rdfs:label>
+        <rdfs:label xml:lang="en">Magnetic Resonance Imaging</rdfs:label>
+        <rdfs:label xml:lang="pt">Imagem por Ressonância Magnética</rdfs:label>
+        <rdfs:label xml:lang="pt">Ressonância Magnética</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#monomelicAmyotrophy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#monomelicAmyotrophy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease"/>
+        <rdfs:label>MMA</rdfs:label>
+        <rdfs:label xml:lang="en">Monomelic Amyotrophy</rdfs:label>
+        <rdfs:label xml:lang="pt">Amiotrofia monomélica</rdfs:label>
+        <rdfs:label xml:lang="pt">Atrofia muscular distal do membro superio</rdfs:label>
+        <rdfs:label xml:lang="pt">Doença de Hirayama</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#motorNeuroneDisease -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#motorNeuroneDisease">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease"/>
+        <rdfs:label xml:lang="en">Motor Neurone Disease</rdfs:label>
+        <rdfs:label xml:lang="pt">Doença do Neurônio Motor</rdfs:label>
+        <rdfs:label>MDN</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscle -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscle">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label xml:lang="en">Muscle</rdfs:label>
+        <rdfs:label xml:lang="pt">Músculo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleAtrophy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleAtrophy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Muscle Atrophy</rdfs:label>
+        <rdfs:label xml:lang="pt">atrofia muscular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleFasciculations -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleFasciculations">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Muscle Fasciculations</rdfs:label>
+        <rdfs:label xml:lang="pt">fasciculação</rdfs:label>
+        <rdfs:label xml:lang="pt">fasciculação muscular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleSpasticity -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleSpasticity">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Muscle Spasticity</rdfs:label>
+        <rdfs:label xml:lang="pt">Espasticidade</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleWeakness -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#muscleWeakness">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Muscle Weakness</rdfs:label>
+        <rdfs:label xml:lang="pt">Fraqueza muscular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#nerveConductionVelocity -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#nerveConductionVelocity">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Exams"/>
+        <rdfs:label>NCV</rdfs:label>
+        <rdfs:label xml:lang="en">Nerve Conduction Velocity</rdfs:label>
+        <rdfs:label xml:lang="pt">Velocidade de condução nervosa</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#neuron -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#neuron">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cells"/>
+        <rdfs:label xml:lang="en">Neuron</rdfs:label>
+        <rdfs:label xml:lang="pt">Neurônio</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#pneumonia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#pneumonia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease"/>
+        <rdfs:label>Pneumonia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#pseudobulbar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#pseudobulbar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Disease"/>
+        <rdfs:label xml:lang="pt">Paralisia pseudobulbar</rdfs:label>
+        <rdfs:label>Pseudobulbar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#respiratoryFailure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#respiratoryFailure">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Condition"/>
+        <rdfs:label xml:lang="en">Respiratory Failure</rdfs:label>
+        <rdfs:label xml:lang="pt">Falha respiratória</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#riluzole -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#riluzole">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug"/>
+        <rdfs:label>Riluzole</rdfs:label>
+        <rdfs:label>Rilutek</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#speak -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#speak">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Actions"/>
+        <rdfs:label xml:lang="en">Speak</rdfs:label>
+        <rdfs:label xml:lang="pt">Falar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#spinalCord -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#spinalCord">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Parts"/>
+        <rdfs:label xml:lang="en">Spinal Cord</rdfs:label>
+        <rdfs:label xml:lang="pt">medula Espinhal</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#stiffness -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#stiffness">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Sympton"/>
+        <rdfs:label xml:lang="en">Stiffness</rdfs:label>
+        <rdfs:label xml:lang="pt">rigidez muscular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#superoxideDismutase -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#superoxideDismutase">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Cause"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Molecule"/>
+        <rdfs:label>SOD1</rdfs:label>
+        <rdfs:label xml:lang="en">Superoxide Dismutase</rdfs:label>
+        <rdfs:label xml:lang="pt">superóxido dismutase</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#swallow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#swallow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Actions"/>
+        <rdfs:label xml:lang="en">Swallow</rdfs:label>
+        <rdfs:label xml:lang="pt">Engolir</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#tracheotomy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#tracheotomy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#BreathSupport"/>
+        <rdfs:label xml:lang="en">Tracheotomy</rdfs:label>
+        <rdfs:label xml:lang="pt">traqueotomia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#trihexyphenidyl -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#trihexyphenidyl">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Drug"/>
+        <rdfs:label xml:lang="en">Trihexyphenidyl</rdfs:label>
+        <rdfs:label xml:lang="pt">Triexifenidil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#walk -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#walk">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/MobiLEHealth/ALS#Actions"/>
+        <rdfs:label xml:lang="en">Walk</rdfs:label>
+        <rdfs:label xml:lang="pt">Andar</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

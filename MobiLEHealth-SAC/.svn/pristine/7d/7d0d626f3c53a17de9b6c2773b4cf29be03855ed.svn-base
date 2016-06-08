@@ -1,0 +1,55 @@
+package mobilehealth.sac.locator;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.apache.log4j.BasicConfigurator;
+
+/**
+ * Execute with a thread the agents that scan MobiLEHealth Database. 
+ * 
+ * @author Jonathan Darlan
+ * @date 01/08/2014
+ * 
+ */
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		//Log4j properties
+		BasicConfigurator.configure();
+		
+
+		String command = "";
+		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+		
+		AccessLocator accessLocator = new AccessLocator();
+		ContentLocator contentLocator = new ContentLocator();
+		PhrLocator phrLocator = new PhrLocator();
+		
+		accessLocator.start();
+		contentLocator.start();
+		phrLocator.start();
+		
+		while(!command.equalsIgnoreCase("exit")) {
+			System.out.print("> ");
+			try {
+				command = buffer.readLine();
+			} catch (IOException e) {
+				System.out.print("#> ");
+				command = "exit";
+				e.printStackTrace();
+			}
+		}
+		
+		accessLocator.terminate();
+		contentLocator.terminate();
+		phrLocator.terminate();
+		
+		System.out.println("Finished!");
+		System.exit(0);
+		
+	}
+}

@@ -1,0 +1,50 @@
+package mobilehealth.sac.util;
+
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+
+import mobilehealth.sac.domain.DomainData;
+
+public class Util {
+
+	/**
+	 * Checks if content is a URL
+	 * 
+	 * @param content
+	 * @return true if the content is a URL
+	 */
+	public static boolean isUrl(String content) {
+
+		boolean result = false;
+
+		try {
+			URL url = new URL(content);
+			URLConnection conn = url.openConnection();
+			conn.connect();
+			result = true;
+		} catch (IOException e) {
+		}
+
+		return result;
+	}
+	
+	public static void sortList(ArrayList<DomainData> d){
+		boolean change = false;							//Caso não haja nenhuma alteração em uma iteração, a lista já está ordenada
+		for(int i = 0; i < d.size(); i++){
+			for(int j = 0 ; j< d.size()-1; j++){
+				if(d.get(j).qtdPalavras < d.get(j+1).qtdPalavras){
+					DomainData temp = d.get(j);
+					d.set(j, d.get(j+1));
+					d.set(j+1, temp);
+					change = true;
+				}	
+			}
+			if(!change)
+				return;
+		}
+			
+	}
+
+}
