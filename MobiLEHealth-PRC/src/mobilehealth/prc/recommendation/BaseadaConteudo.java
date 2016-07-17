@@ -235,25 +235,79 @@ public class BaseadaConteudo
 			e.printStackTrace();
 		}
 		
-		int personSize = iData.getCountPerson();
-		
 		List<Person> listPerson = new ArrayList<Person>();
 		List<Person> listPerson2 = iData.getAllPerson();
-		List<Content> listContent = iData.getAllContent();
 		
 
 		for(int b = 0; b < minhaLista.size(); b++){
 			for(int a = 0; a < listPerson2.size(); a++){
 				if(minhaLista.get(b) == listPerson2.get(a).getId()){
-					System.out.println(a + " - "  +listPerson2.get(a).getId());
+					//System.out.println(a + " - "  +listPerson2.get(a).getId());
 					listPerson.add(listPerson2.get(a));
 					break;
 				}
 			}
 		}
 		
-		int contentSize = iData.getCountContent();
-		personSize = listPerson.size();
+		
+		
+		minhaLista = new ArrayList<Integer>();
+		c = null;
+		stmt = null;
+		sql = "select c.id as id_content from public.content c where c.font = true";
+		try {
+			
+			Class.forName("org.postgresql.Driver");
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mobilehealth2","postgres", "postgres");
+			stmt = c.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			 // Cria uma ArrayLista, onde os valores serão adicionados e enviados atrazes do return
+	       
+	        int id;
+	        //Enquanto existir valores no ResultSet
+	        // o loop sera efetuado
+	        while (rs.next()) {
+
+	           id = Integer.parseInt(rs.getString("id_content"));
+
+	            minhaLista.add(id);
+
+	        }
+
+			
+			
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		List<Content> listContent = new ArrayList<Content>();
+		List<Content> listContent2 = iData.getAllContent();
+		
+
+		for(int b = 0; b < minhaLista.size(); b++){
+			for(int a = 0; a < listContent2.size(); a++){
+				if(minhaLista.get(b) == listContent2.get(a).getId()){
+					//System.out.println(a + " - "  +listContent2.get(a).getId());
+					listContent.add(listContent2.get(a));
+					break;
+				}
+			}
+		}
+		
+		
+		
+	
+		int personSize = listPerson.size();
+		int contentSize = listContent.size();
 		float aparenciaFinal[][] = new float[personSize][contentSize];
 		
 		System.out.println("ListContent  = " + listContent.size());

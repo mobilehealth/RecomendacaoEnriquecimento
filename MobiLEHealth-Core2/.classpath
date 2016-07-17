@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/LES-01/workspace/MobiLEHealth-Core2/lib/libs/antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="lib/libs/hibernate-commons-annotations-4.0.4.Final.jar"/>
 	<classpathentry kind="lib" path="lib/libs/hibernate-core-4.3.5.Final.jar"/>
 	<classpathentry kind="lib" path="lib/libs/hibernate-entitymanager-4.3.5.Final.jar"/>
@@ -18,5 +17,6 @@
 	<classpathentry kind="lib" path="lib/libs/jsoup-1.8.1.jar"/>
 	<classpathentry kind="lib" path="lib/libs/postgresql-9.2-1002.jdbc4.jar"/>
 	<classpathentry kind="lib" path="lib/libs/postgresql-9.3-1102.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/libs/antlr-2.7.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

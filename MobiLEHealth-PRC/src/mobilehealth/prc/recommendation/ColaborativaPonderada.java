@@ -391,21 +391,19 @@ public class ColaborativaPonderada
 			e.printStackTrace();
 		}
 		
-		int personSize = iData.getCountPerson();
-		List<Content> listContent = iData.getAllContent();
-		
 		for(int b = 0; b < minhaLista.size(); b++){
 			for(int a = 0; a < listPerson2.size(); a++){
 				
 				if(minhaLista.get(b) == listPerson2.get(a).getId()){
-					System.out.println(a + " - "  +listPerson2.get(a).getId());
+					//System.out.println(a + " - "  +listPerson2.get(a).getId());
 					listPerson.add(listPerson2.get(a));
 					break;
 				}
 			}
 		}
 		
-		personSize = listPerson.size();
+	
+		int personSize = listPerson.size();
 		
 		float aparenciaFinal[][] = new float[personSize][personSize];
 
